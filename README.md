@@ -1,2 +1,2 @@
 # praktikum2
-blabla
+blabla olga
