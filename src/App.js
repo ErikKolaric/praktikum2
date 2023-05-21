@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './pages/Profile';
 import Spinner from './components/Spinner';
 import { useSelector } from 'react-redux';
+import BarberForm from './pages/BarberForm';
 
 function App() {
   const { loading } = useSelector(state => state.loader)
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path='/apply-doctor' element={<ProtectedRoute><BarberForm /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </div>
