@@ -42,6 +42,9 @@ background-color: #d61355;
 .justify-between {
   justify-content: space-between;
 }
+.justify-end {
+  justify-content: flex-end;
+}
 .items-center {
   align-items: center;
 }
@@ -61,6 +64,9 @@ background-color: #d61355;
 }
 .w-400 {
   width: 400px;
+}
+.w-full {
+  width: 100%;
 }
 .p-1 {
   padding: 10px;
@@ -106,15 +112,19 @@ background-color: #d61355;
 }
 
 /* form elements  */
-input {
+input, textarea, select {
   height: 45px !important;
   border: 1px solid #909090;
   width: 100%;
   padding-left: 15px;
 } 
-input:focus {
+input:focus, textarea, select {
   outline: none;
   border: 1px solid #494949
+}
+textarea {
+  min-height: 100px;
+  padding-top: 20px;
 }
 .contained-btn {
   height: 45px !important;
@@ -123,6 +133,7 @@ input:focus {
   color: white !important;
   text-transform: uppercase;
   width: 100%;
+  padding: 0 20px;
 }
 .outlined-btn {
   height: 45px !important;
@@ -131,7 +142,7 @@ input:focus {
   color: black !important;
   text-transform: uppercase;
   border: 1px solid black;
-  width: 100%;
+  padding: 0 20px;
 }
 
 /* text classes */
