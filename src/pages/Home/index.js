@@ -7,9 +7,9 @@ const Home = () => {
     return(
         <div className="flex justify-between">
             <div>
-                <input placeholder="Search doctors" className="w-400" />
+                <input placeholder="Search barbers" className="w-400" />
             </div>
-            <button className="outlined-btn my-1" onClick={() => navigate("/apply-doctor")}>Apply Doctor</button>
+            <button className="outlined-btn my-1" onClick={() => navigate("/apply-barber")}>Apply Barber</button>
         </div>
     )
 }

@@ -21,7 +21,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path='/apply-doctor' element={<ProtectedRoute><BarberForm /></ProtectedRoute>} />
+          <Route path='/apply-barber' element={<ProtectedRoute><BarberForm /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </div>

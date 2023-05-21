@@ -9,7 +9,7 @@ function BarberForm() {
     }
     return (
         <div className="bg-white p-2">
-            <h3 className="uppercase my-2">Apply for a Doctor Account</h3>
+            <h3 className="uppercase my-2">Apply for a Barber Account</h3>
             <hr />
             <Form layout="vertical" className="my-1" onFinish={onFinish}>
                 <Row gutter={[16, 16]}>
@@ -186,9 +186,12 @@ function BarberForm() {
                                 </div>
                             ))}
                         </div>
-                        
                     </Col>
                 </Row>
+                <div className="flex justify-end gap-2">
+                    <button className="outlined-btn" type="button">CANCEL</button>
+                    <button className="contained-btn" type="submit">SUBMIT</button>
+                </div>
             </Form>
         </div>
     )
