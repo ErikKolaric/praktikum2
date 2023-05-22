@@ -5,6 +5,7 @@ import { ShowLoader } from "../../redux/loaderSlice";
 import { GetBarberById } from "../../apicalls/barbers";
 import { message } from "antd";
 import moment from "moment";
+import { BookBarberAppointment } from "../../apicalls/appointments";
 
 function BookAppointment() {
   const [date = "", setDate] = React.useState("");
@@ -68,7 +69,33 @@ function BookAppointment() {
       );
     });
   };
+  const onBookAppointment = async()  => {
+    try {
+      dispatch(ShowLoader(true));
+      const payload = {
+        barberId: barber.id,
+        userId : JSON.parse(localStorage.getItem("user")).id,
+        date,
+        slot : selectedSlot,
+        barberName : `${barber.firstName} ${barber.lastName}`,
+        userName : JSON.parse(localStorage.getItem("user")).name,
+        bookedOn : moment().format("DD-MM-YYYY HH:mm A")
+      };
+      const response = await BookBarberAppointment(payload);
+      if (response.success) {
+        message.success(response.message);
+        navigate("/profile");
+      } else {
+        message.error(response.message);
+      }
+      dispatch(ShowLoader(false));
+    }
+      catch (error){
+        message.error(error.message);
+        dispatch(ShowLoader(false));
+      }
 
+  }
   useEffect(() => {
     getData();
   }, [id]);
@@ -148,7 +175,8 @@ function BookAppointment() {
               >
                 Cancel
               </button>
-              <button className="contained-btn">Book Appointment</button>
+             
+              <button className="contained-btn" onClick={onBookAppointment}>Book Appointment</button>
             </div>
           )}
         </div>
