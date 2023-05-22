@@ -1,19 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom/dist";
 import { ShowLoader } from "../../redux/loaderSlice";
 import { GetBarberById } from "../../apicalls/barbers";
 import { message } from "antd";
 import moment from "moment";
-import { BookBarberAppointment } from "../../apicalls/appointments";
+import { BookBarberAppointment, GetBarberAppointmentsOnDate } from "../../apicalls/appointments";
 
 function BookAppointment() {
-  const [date = "", setDate] = React.useState("");
-  const [barber, setBarber] = React.useState(null);
-  const [selectedSlot = "", setSelectedSlot] = React.useState("");
+  const [date = "", setDate] = useState("");
+  const [barber, setBarber] = useState(null);
+  const [selectedSlot = "", setSelectedSlot] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [bookedSlots = [], setBookedSlots] = useState([])
 
   const getData = async () => {
     try {
@@ -32,7 +33,6 @@ function BookAppointment() {
     }
   };
 
-  //npm i moment --> knjiznica za cas i guess
   const getSlotsData = () => {
     const day = moment(date).format("dddd");
     if (!barber.days.includes(day)) {
@@ -43,13 +43,16 @@ function BookAppointment() {
 
     let startTime = moment(barber.startTime, "HH:mm");
     let endTime = moment(barber.endTime, "HH:mm");
-    let slotDuration = 60; // in minutes
+    let slotDuration = 30; 
     const slots = [];
     while (startTime < endTime) {
       slots.push(startTime.format("HH:mm"));
       startTime.add(slotDuration, "minutes");
     }
     return slots.map((slot) => {
+      const isBooked = bookedSlots.find(
+        (bookedSlot) => bookedSlot.slot === slot
+      )
       return (
         <div
           className="bg-white p-1 curser-pointer"
@@ -57,13 +60,16 @@ function BookAppointment() {
           style={{
             border:
               selectedSlot === slot ? "3px solid green" : "1px solid gray",
+            backgroundColor: isBooked ? "#d6d6d6" : "white" ,
+            pointerEvents: isBooked ? "none" : "auto",
+            cursor: isBooked ? "not-allowed" : "pointer"
           }}
         >
           <span>
-            {moment(slot, "HH:mm A").format("HH:mm A")} -{" "}
+            {moment(slot, "HH:mm A").format("HH:mm")} -{" "}
             {moment(slot, "HH:mm A")
               .add(slotDuration, "minutes")
-              .format("HH:mm A")}
+              .format("HH:mm")}
           </span>
         </div>
       );
@@ -96,11 +102,32 @@ function BookAppointment() {
       }
 
   }
+  const getBookedSlots = async() => {
+    try {
+      dispatch(ShowLoader(true))
+      const response = await GetBarberAppointmentsOnDate(id, date)
+      dispatch(ShowLoader(false))
+      if(response.success) {
+        console.log(response.data)
+        setBookedSlots(response.data)
+      } else {
+        message.error(response.message)
+      }
+    } catch (error) {
+      dispatch(ShowLoader(false))
+      message.error(error.message)
+    }
+  }
   useEffect(() => {
     getData();
   }, [id]);
 
-  //barber?.firstName nevem zakaj ze v naprej neda moznosti firstName pa lastName
+  useEffect(() => {
+    if(date) {
+      getBookedSlots()
+    }
+  }, [date])
+
   return (
     barber && (
       <div className="bg-white p-2">

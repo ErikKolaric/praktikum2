@@ -31,7 +31,6 @@ const Home = () => {
   }, []);
 
   const navigate = useNavigate();
-
   return (
     <div>
       <div className="flex justify-between">
@@ -53,7 +52,6 @@ const Home = () => {
                 {console.log(barber)}
                 <div
                   className="bg-white p-1 flex-col gap-1 cursor-pointer"
-                  // zasto nama nije kao u videu $barber.id plave boje??? .... narekovaj "" -> ``
                   onClick={() => navigate(`/book-appointment/${barber.id}`)}
                 >
                   <div className="flex justify-between w-full">
