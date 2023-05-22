@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore"
 import firestoreDatabase from "../FirebaseConfig";
 
 export const AddBarber = async (payload) => {
@@ -76,6 +76,21 @@ export const UpdateBarber = async (payload) => {
         return {
             success: false,
             message: error.message
+        }
+    }
+}
+
+export const  GetBarberById = async (id) => {
+    try {
+        const barber = await getDoc(doc(firestoreDatabase, "barbers", id));
+        return {
+            success: true,
+            data: barber.data(),
+        };
+    } catch (error) {
+        return {
+            success: false,
+            message: error.message,
         }
     }
 }

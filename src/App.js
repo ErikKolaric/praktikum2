@@ -10,6 +10,7 @@ import Spinner from './components/Spinner';
 import { useSelector } from 'react-redux';
 import BarberForm from './pages/BarberForm';
 import Admin from './pages/Admin';
+import BookAppointment from './pages/BookAppointment';
 
 function App() {
   const { loading } = useSelector(state => state.loader)
@@ -21,6 +22,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path='/book-appointment/:id' element={<ProtectedRoute><BookAppointment /></ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path='/apply-barber' element={<ProtectedRoute><BarberForm /></ProtectedRoute>} />
           <Route path='/admin' element={<ProtectedRoute><Admin /></ProtectedRoute>} />

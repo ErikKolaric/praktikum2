@@ -1,5 +1,5 @@
 body, html {
-  background-color: #e4e4e4;
+  background-color: #f0eeee;
 }
 *{
   margin: 0;
@@ -7,7 +7,8 @@ body, html {
   box-sizing: border-box;
 }
 h1, h2, h3, h4, h5, h6, a, span, p {
-  color: #494949;
+  color: #202020;
+  font-weight: 500;
 }
 
 /* colors and backgrounds */
@@ -118,6 +119,7 @@ input, textarea, select {
   border: 1px solid #909090;
   width: 100%;
   padding-left: 15px;
+  border-radius: 4px;
 } 
 input:focus, textarea, select {
   outline: none;
@@ -129,20 +131,20 @@ textarea {
 }
 .contained-btn {
   height: 45px !important;
-  border-radius: 0 !important;
   background-color: black;
   color: white !important;
   text-transform: uppercase;
   padding: 0 20px;
+  border-radius: 4px;
 }
 .outlined-btn {
   height: 45px !important;
-  border-radius: 0 !important;
   background-color: white;
   color: black !important;
   text-transform: uppercase;
   border: 1px solid black;
   padding: 0 20px;
+  border-radius: 4px;
 }
 
 /* text classes */
@@ -172,4 +174,8 @@ textarea {
   align-items: center;
   background-color: #0000009a;
   z-index: 100;
+}
+
+hr {
+  border: 1px solid #d3d2d2;
 }
