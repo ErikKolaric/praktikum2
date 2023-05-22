@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom/dist";
+import { useNavigate, useParams } from "react-router-dom/dist";
 import { ShowLoader } from "../../redux/loaderSlice";
 import { GetBarberById } from "../../apicalls/barbers";
 import { message } from "antd";
+import moment from "moment";
 
 function BookAppointment() {
   const [date = "", setDate] = React.useState("");
   const [barber, setBarber] = React.useState(null);
-
+  const [selectedSlot = "", setSelectedSlot] = React.useState("");
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -31,9 +33,40 @@ function BookAppointment() {
 
   //npm i moment --> knjiznica za cas i guess
   const getSlotsData = () => {
+    const day = moment(date).format("dddd");
+    if (!barber.days.includes(day)) {
+      return (
+        <h3>Barber is not available on {moment(date).format("DD-MM-YYYY")}</h3>
+      );
+    }
 
-    return <>
-    </>;
+    let startTime = moment(barber.startTime, "HH:mm");
+    let endTime = moment(barber.endTime, "HH:mm");
+    let slotDuration = 60; // in minutes
+    const slots = [];
+    while (startTime < endTime) {
+      slots.push(startTime.format("HH:mm"));
+      startTime.add(slotDuration, "minutes");
+    }
+    return slots.map((slot) => {
+      return (
+        <div
+          className="bg-white p-1 curser-pointer"
+          onClick={() => setSelectedSlot(slot)}
+          style={{
+            border:
+              selectedSlot === slot ? "3px solid green" : "1px solid gray",
+          }}
+        >
+          <span>
+            {moment(slot, "HH:mm A").format("HH:mm A")} -{" "}
+            {moment(slot, "HH:mm A")
+              .add(slotDuration, "minutes")
+              .format("HH:mm A")}
+          </span>
+        </div>
+      );
+    });
   };
 
   useEffect(() => {
@@ -76,9 +109,15 @@ function BookAppointment() {
           </div>
           <div className="flex justify-between w-full">
             <h4>
+              <b>Fee:</b>
+            </h4>
+            <h4>{barber.fee}€ Per Session</h4>
+          </div>
+          <div className="flex justify-between w-full">
+            <h4>
               <b>Days Available:</b>
             </h4>
-            <h4>{barber.days.join(', ')}</h4>
+            <h4>{barber.days.join(", ")}</h4>
           </div>
         </div>
 
@@ -93,10 +132,25 @@ function BookAppointment() {
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
+                min={moment().format("DD-MM-YYYY")}
               />
             </div>
           </div>
-          {date && getSlotsData()}
+          <div className="flex gap-2">{date && getSlotsData()}</div>
+
+          {selectedSlot && (
+            <div className="flex gap-2 justify-center my-3">
+              <button
+                className="outlined-btn"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Cancel
+              </button>
+              <button className="contained-btn">Book Appointment</button>
+            </div>
+          )}
         </div>
       </div>
     )
