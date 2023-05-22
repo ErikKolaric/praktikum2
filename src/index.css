@@ -50,6 +50,9 @@ background-color: #d61355;
 .items-center {
   align-items: center;
 }
+.items-end {
+  align-items: flex-end;
+}
 .gap-1 {
   gap: 10px
 }
@@ -69,6 +72,9 @@ background-color: #d61355;
 }
 .w-full {
   width: 100%;
+}
+.w-half {
+  width: 50%;
 }
 .p-1 {
   padding: 10px;

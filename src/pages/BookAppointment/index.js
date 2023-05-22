@@ -6,6 +6,7 @@ import { GetBarberById } from "../../apicalls/barbers";
 import { message } from "antd";
 
 function BookAppointment() {
+  const [date = "", setDate] = React.useState("");
   const [barber, setBarber] = React.useState(null);
 
   const { id } = useParams();
@@ -28,6 +29,13 @@ function BookAppointment() {
     }
   };
 
+  //npm i moment --> knjiznica za cas i guess
+  const getSlotsData = () => {
+
+    return <>
+    </>;
+  };
+
   useEffect(() => {
     getData();
   }, [id]);
@@ -37,12 +45,14 @@ function BookAppointment() {
     barber && (
       <div className="bg-white p-2">
         <h1 className="uppercase my-1">
-          <b>{barber?.firstName} {barber?.lastName}</b>
+          <b>
+            {barber?.firstName} {barber?.lastName}
+          </b>
         </h1>
 
         <hr />
 
-        <div className="w-400 flex flex-col gap-1 my-1">
+        <div className="flex flex-col gap-1 my-1 w-half">
           <div className="flex justify-between w-full">
             <h4>
               <b>Experience:</b>
@@ -64,9 +74,30 @@ function BookAppointment() {
             </h4>
             <h4>{barber.phone}</h4>
           </div>
+          <div className="flex justify-between w-full">
+            <h4>
+              <b>Days Available:</b>
+            </h4>
+            <h4>{barber.days.join(', ')}</h4>
+          </div>
         </div>
 
         <hr />
+
+        {/* slots here */}
+        <div className="flex flex-col gap-1 my-2">
+          <div className="flex gap-2 w-400 items-end">
+            <div>
+              <span>Select date:</span>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </div>
+          </div>
+          {date && getSlotsData()}
+        </div>
       </div>
     )
   );
