@@ -11,7 +11,10 @@ const Register = () => {
     const onFinish = async (values) => {
         try {
             dispatch(ShowLoader(true))
-            const response = await CreateUser(values);
+            const response = await CreateUser({
+                ...values,
+                role: "user",
+            });
             dispatch(ShowLoader(false))
             if(response.success) {
                 message.success(response.message)
