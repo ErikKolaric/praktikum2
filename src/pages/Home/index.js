@@ -43,7 +43,8 @@ const Home = () => {
                 return (
                 <Col span={8}>
                     <div className="bg-white p-1 flex-col gap-1 uppercase w-400 cursor-pointer" 
-                    onClick={() => navigate('/book-apointment/ ${barber.id}')}> // zasto nama nije kao u videu $barber.id plave boje???
+                    // zasto nama nije kao u videu $barber.id plave boje???
+                    onClick={() => navigate('/book-apointment/ ${barber.id}')}>  
                     <div className="flex justify-between w-full
                     ">
                     
