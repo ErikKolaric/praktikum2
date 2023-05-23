@@ -91,6 +91,7 @@ export const GetUserAppointments = async (userId) => {
     }
 }
 
+// TU NEKAJ MOGOCE ZEZA
 export const UpdateAppointmentStatus = async (id, status) => {
     try {
         console.log(status)
