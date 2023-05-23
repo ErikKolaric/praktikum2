@@ -6,7 +6,7 @@ import { ShowLoader } from "../../redux/loaderSlice";
 
 function Appointments() {
     const [appointments, setAppointments] = useState([])
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
     const getData = async () => {
         const user = JSON.parse(localStorage.getItem("user"))
         if (user.role === "barber") {
