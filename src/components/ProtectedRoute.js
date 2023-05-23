@@ -16,8 +16,7 @@ const ProtectedRoute = ({children}) => {
                 <h2 className="cursor-pointer" 
                     onClick={() => navigate("/")}
                 >
-                    <strong className="text-primary">Barber</strong>
-                    <strong className="text-secondary"> Shop</strong>
+                    <strong className="text-primary">BarberShop</strong>
                 </h2>
                 {user && (
                     <div className="flex items-center gap-3">

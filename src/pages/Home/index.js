@@ -35,7 +35,7 @@ const Home = () => {
     <div>
       <div className="flex justify-between">
         <div>
-          <input placeholder="Search barbers" className="w-400" />
+          <input placeholder="Search barbers" className="w-400 rounded" />
         </div>
         <button
           className="outlined-btn"

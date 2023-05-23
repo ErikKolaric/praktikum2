@@ -8,6 +8,7 @@ import moment from "moment";
 import { BookBarberAppointment, GetBarberAppointmentsOnDate } from "../../apicalls/appointments";
 
 function BookAppointment() {
+  const [problem="", setProblem] = useState("")
   const [date = "", setDate] = useState("");
   const [barber, setBarber] = useState(null);
   const [selectedSlot = "", setSelectedSlot] = useState("");
@@ -51,7 +52,7 @@ function BookAppointment() {
     }
     return slots.map((slot) => {
       const isBooked = bookedSlots.find(
-        (bookedSlot) => bookedSlot.slot === slot
+        (bookedSlot) => bookedSlot.slot === slot && bookedSlot.status !== "cancelled"
       )
       return (
         <div
@@ -66,10 +67,10 @@ function BookAppointment() {
           }}
         >
           <span>
-            {moment(slot, "HH:mm A").format("HH:mm")} -{" "}
+            {moment(slot, "HH:mm A").format("hh:mm")} -{" "}
             {moment(slot, "HH:mm A")
               .add(slotDuration, "minutes")
-              .format("HH:mm")}
+              .format("hh:mm")}
           </span>
         </div>
       );
@@ -85,7 +86,9 @@ function BookAppointment() {
         slot : selectedSlot,
         barberName : `${barber.firstName} ${barber.lastName}`,
         userName : JSON.parse(localStorage.getItem("user")).name,
-        bookedOn : moment().format("DD-MM-YYYY HH:mm A")
+        bookedOn : moment().format("DD-MM-YYYY hh:mm A"),
+        problem,
+        status: "pending"
       };
       const response = await BookBarberAppointment(payload);
       if (response.success) {
@@ -161,12 +164,12 @@ function BookAppointment() {
             </h4>
             <h4>{barber.phone}</h4>
           </div>
-          <div className="flex justify-between w-full">
+          {/* <div className="flex justify-between w-full">
             <h4>
               <b>Fee:</b>
             </h4>
             <h4>{barber.fee}€ Per Session</h4>
-          </div>
+          </div> */}
           <div className="flex justify-between w-full">
             <h4>
               <b>Days Available:</b>
@@ -193,17 +196,24 @@ function BookAppointment() {
           <div className="flex gap-2">{date && getSlotsData()}</div>
 
           {selectedSlot && (
-            <div className="flex gap-2 justify-center my-3">
-              <button
-                className="outlined-btn"
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Cancel
-              </button>
-             
-              <button className="contained-btn" onClick={onBookAppointment}>Book Appointment</button>
+            <div>
+              <textarea 
+                placeholder="What do you need?" 
+                value={problem} 
+                onChange={(e) => setProblem(e.target.value)} 
+                rows="10"></textarea>
+              <div className="flex gap-2 justify-center my-3">
+                <button
+                  className="outlined-btn"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Cancel
+                </button>
+              
+                <button className="contained-btn" onClick={onBookAppointment}>Book Appointment</button>
+              </div>
             </div>
           )}
         </div>
