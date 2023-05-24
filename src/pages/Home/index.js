@@ -6,7 +6,7 @@ import { ShowLoader } from "../../redux/loaderSlice";
 import { GetAllBarbers } from "../../apicalls/barbers";
 
 const Home = () => {
-  const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState("all")
   const [barbers = [], setBarbers] = useState([]);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -54,7 +54,7 @@ const Home = () => {
         <div className="flex">
         <label for="services">Filter by services:</label>
           <select name="services" id="services" onChange={handleChangeFilter}>
-            <option value="all">All</option>
+            <option  value="all">All</option>
             <option value="hair">Hair</option>
             <option value="beard">Beard</option>
             <option value="face">Face</option>
