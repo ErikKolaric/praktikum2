@@ -129,7 +129,7 @@ function BarberForm() {
                                 </Form.Item>
                             </Col>
                             <Col span={24}>
-                                <Form.Item label="Adress" name="adress"
+                                <Form.Item label="Address" name="address"
                                     rules={[
                                         {
                                             required: true,
