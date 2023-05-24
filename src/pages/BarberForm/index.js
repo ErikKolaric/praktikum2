@@ -74,8 +74,8 @@ function BarberForm() {
   }, []);
   return (
     <div className="bg-white p-2">
-      {!alreadyApplied ||
-        (alreadyApproved && (
+      {alreadyApplied ||
+        (!alreadyApproved && (
           <>
             <h3 className="uppercase my-2">
               {alreadyApproved
