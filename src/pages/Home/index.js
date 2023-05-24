@@ -1,14 +1,18 @@
 import { Col, Row, message } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ShowLoader } from "../../redux/loaderSlice";
-import { GetAllUsers } from "../../apicalls/users";
 import { GetAllBarbers } from "../../apicalls/barbers";
 
 const Home = () => {
-  const [barbers = [], setBarbers] = React.useState([]);
+  const [filter, setFilter] = useState("")
+  const [barbers = [], setBarbers] = useState([]);
   const dispatch = useDispatch();
+
+  const handleChangeFilter = (e) => {
+    setFilter(e.target.value);
+  }
 
   const getData = async () => {
     try {
@@ -31,11 +35,29 @@ const Home = () => {
   }, []);
 
   const navigate = useNavigate();
+
+  const barbersFilter = barbers.filter((barber) => {
+    if(barber.role === filter) {
+        return barber;
+    } else if(filter === "all") {
+        return barber
+    }
+  });
+
   return (
     <div>
       <div className="flex justify-between">
         <div>
           <input placeholder="Search barbers" className="w-400 rounded" />
+        </div>
+        <div className="flex">
+        <label for="services">Filter by services:</label>
+          <select name="services" id="services" onChange={handleChangeFilter}>
+            <option value="all">All</option>
+            <option value="hair">Hair</option>
+            <option value="beard">Beard</option>
+            <option value="face">Face</option>
+          </select>
         </div>
         <button
           className="outlined-btn"
@@ -46,7 +68,7 @@ const Home = () => {
       </div>
       <div>
         <Row gutter={[16, 16]} className="my-1">
-          {barbers.map((barber) => {
+          {barbersFilter.map((barber) => {
             return (
               <Col span={8}>
                 {console.log(barber)}
