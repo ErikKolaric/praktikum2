@@ -9,6 +9,7 @@ const Home = () => {
   const [filter, setFilter] = useState("")
   const [barbers = [], setBarbers] = useState([]);
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleChangeFilter = (e) => {
     setFilter(e.target.value);
@@ -59,12 +60,14 @@ const Home = () => {
             <option value="face">Face</option>
           </select>
         </div>
-        <button
-          className="outlined-btn"
-          onClick={() => navigate("/apply-barber")}
-        >
-          Apply Barber
-        </button>
+        {user.role !== "barber" && (
+          <button
+            className="outlined-btn"
+            onClick={() => navigate("/apply-barber")}
+          >
+            Apply Barber
+          </button>
+        )}
       </div>
       <div>
         <Row gutter={[16, 16]} className="my-1">
@@ -81,8 +84,8 @@ const Home = () => {
                       {barber.firstName} {barber.lastName}
                     </h2>
                   </div>
-                  <br/>
-                  <hr/>
+                  <br />
+                  <hr />
                   <br />
                   <div className="flex justify-between w-full">
                     <h4>

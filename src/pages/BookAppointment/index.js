@@ -164,6 +164,12 @@ function BookAppointment() {
             </h4>
             <h4>{barber.phone}</h4>
           </div>
+          <div className="flex justify-between w-full">
+            <h4>
+              <b>Address:</b>
+            </h4>
+            <h4>{barber.adress}</h4>
+          </div>
           {/* <div className="flex justify-between w-full">
             <h4>
               <b>Fee:</b>
