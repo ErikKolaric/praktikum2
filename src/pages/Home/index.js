@@ -9,6 +9,7 @@ import { GetAllBarbers } from "../../apicalls/barbers";
 const Home = () => {
   const [barbers = [], setBarbers] = React.useState([]);
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const getData = async () => {
     try {
@@ -37,12 +38,14 @@ const Home = () => {
         <div>
           <input placeholder="Search barbers" className="w-400 rounded" />
         </div>
-        <button
-          className="outlined-btn"
-          onClick={() => navigate("/apply-barber")}
-        >
-          Apply Barber
-        </button>
+        {user.role !== "barber" && (
+          <button
+            className="outlined-btn"
+            onClick={() => navigate("/apply-barber")}
+          >
+            Apply Barber
+          </button>
+        )}
       </div>
       <div>
         <Row gutter={[16, 16]} className="my-1">
@@ -59,8 +62,8 @@ const Home = () => {
                       {barber.firstName} {barber.lastName}
                     </h2>
                   </div>
-                  <br/>
-                  <hr/>
+                  <br />
+                  <hr />
                   <br />
                   <div className="flex justify-between w-full">
                     <h4>
