@@ -70,6 +70,9 @@ background-color: #d61355;
 .h-screen {
   height: 100vh;
 }
+.w-100 {
+  min-width: 120px;
+}
 .w-400 {
   width: 400px;
 }
@@ -138,6 +141,9 @@ textarea {
   min-height: 100px;
   padding-top: 20px;
 }
+.scroll-horizontal {
+  overflow-x: scroll;
+}
 .contained-btn {
   height: 45px !important;
   background-color: black;
@@ -168,6 +174,9 @@ textarea {
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.text-center {
+  text-align: center;
 }
 
 /* antd overiding*/

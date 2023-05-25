@@ -56,7 +56,7 @@ function BookAppointment() {
       )
       return (
         <div
-          className="bg-white p-1 curser-pointer"
+          className="bg-white p-1 curser-pointer w-100 text-center"
           onClick={() => setSelectedSlot(slot)}
           style={{
             border:
@@ -199,7 +199,7 @@ function BookAppointment() {
               />
             </div>
           </div>
-          <div className="flex gap-2">{date && getSlotsData()}</div>
+          <div className="flex gap-2 scroll-horizontal">{date && getSlotsData()}</div>
 
           {selectedSlot && (
             <div>

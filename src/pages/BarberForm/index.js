@@ -11,7 +11,7 @@ import { ShowLoader } from "../../redux/loaderSlice";
 
 function BarberForm() {
   const [form] = Form.useForm();
-  const [alreadyApproved, setAlreadyApproved] = React.useState(false);
+  const [alreadyApproved, setAlreadyApproved] = useState(false);
   const [days, setDays] = useState([]);
   const [alreadyApplied, setAlreadyApplied] = useState(false);
   const dispatch = useDispatch();
@@ -53,7 +53,6 @@ function BarberForm() {
       const response = await CheckIfBarberAccountIsApplied(
         JSON.parse(localStorage.getItem("user")).id
       );
-      console.log(response);
       if (response.success) {
         setAlreadyApplied(true);
         if (response.data.status === "approved") {
@@ -61,6 +60,7 @@ function BarberForm() {
           form.setFieldsValue(response.data);
           setDays(response.data.days);
         }
+        console.log(alreadyApplied);
       }
       dispatch(ShowLoader(false));
     } catch (error) {
@@ -74,8 +74,8 @@ function BarberForm() {
   }, []);
   return (
     <div className="bg-white p-2">
-      {alreadyApplied ||
-        (!alreadyApproved && (
+      {!alreadyApplied ||
+        (alreadyApproved && (
           <>
             <h3 className="uppercase my-2">
               {alreadyApproved

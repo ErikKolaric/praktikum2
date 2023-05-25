@@ -52,7 +52,7 @@ const Home = () => {
           <input placeholder="Search barbers" className="w-400 rounded" />
         </div>
         <div className="flex">
-        <label for="services">Filter by services:</label>
+        <label htmlFor="services">Filter by services:</label>
           <select name="services" id="services" onChange={handleChangeFilter}>
             <option  value="all">All</option>
             <option value="hair">Hair</option>
@@ -76,10 +76,10 @@ const Home = () => {
               <Col span={8}>
                 {console.log(barber)}
                 <div
-                  className="bg-white p-1 flex-col gap-1 cursor-pointer"
+                  className="bg-white p-1 flex-col gap-1 cursor-pointer" 
                   onClick={() => navigate(`/book-appointment/${barber.id}`)}
                 >
-                  <div className="flex justify-between w-full">
+                  <div className="flex justify-between w-full" key={barber.id}>
                     <h2 className="uppercase">
                       {barber.firstName} {barber.lastName}
                     </h2>

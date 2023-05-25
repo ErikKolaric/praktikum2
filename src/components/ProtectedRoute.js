@@ -19,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
         {user && (
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <i class="ri-shield-user-line"></i>
+              <i className="ri-shield-user-line"></i>
               <h3
                 className="uppercase cursor-pointer underline"
                 onClick={() => {
@@ -31,7 +31,7 @@ const ProtectedRoute = ({ children }) => {
               </h3>
             </div>
             <i
-              class="ri-logout-box-r-line"
+              className="ri-logout-box-r-line"
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/login");

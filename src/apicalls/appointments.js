@@ -4,6 +4,7 @@ import firestoreDatabase from "../FirebaseConfig"
 
 export const BookBarberAppointment = async(payload)  => {
     try {
+        console.log(payload)
         await addDoc(collection(firestoreDatabase, "appointments"), payload);
         return { success: true, message: "Appointment booked successfully" };
     } catch (error) {
@@ -39,6 +40,7 @@ export const GetBarberAppointmentsOnDate = async (barberId, date) => {
 
 export const GetBarberAppointments = async (barberId) => {
     try {
+        console.log(barberId)
         const querySnapshot = await getDocs(
             query(
                 collection(firestoreDatabase, "appointments"),
