@@ -60,7 +60,7 @@ const Home = () => {
             <option value="face">Face</option>
           </select>
         </div>
-        {user.role !== "barber" && (
+        {user?.role !== "barber" && (
           <button
             className="outlined-btn"
             onClick={() => navigate("/apply-barber")}

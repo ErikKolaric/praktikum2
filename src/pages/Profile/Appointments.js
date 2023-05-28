@@ -22,7 +22,6 @@ function Appointments() {
         }
     }
 
-    // MOGOČE TUKAJ ZEZA
     const onUpdate = async (id, status) => {
         try {
             dispatch(ShowLoader(true))
@@ -62,8 +61,8 @@ function Appointments() {
             dataIndex: "bookedOn"
         },
         {
-            title: "Problem",
-            dataIndex: "problem"
+            title: "Description",
+            dataIndex: "description"
         },
         {
             title: "Status",
@@ -80,7 +79,6 @@ function Appointments() {
                             <span className="underline cursor-pointer" 
                                 onClick={() => onUpdate(record.id, "cancelled")}
                                 >Cancel</span>
-                                {/* NEKAJ ZEZA BUTTON APPROVE */}
                             <span className="underline cursor-pointer" 
                                 onClick={() => onUpdate(record.id, "approved")}
                                 >Approve</span>

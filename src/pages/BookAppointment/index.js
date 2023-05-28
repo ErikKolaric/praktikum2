@@ -3,12 +3,16 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom/dist";
 import { ShowLoader } from "../../redux/loaderSlice";
 import { GetBarberById } from "../../apicalls/barbers";
-import { message } from "antd";
+import { Form, message } from "antd";
 import moment from "moment";
 import { BookBarberAppointment, GetBarberAppointmentsOnDate } from "../../apicalls/appointments";
 
 function BookAppointment() {
-  const [problem="", setProblem] = useState("")
+  const [userName="", setUserName] = useState("")
+  const [email="", setEmail] = useState("")
+  const [phoneNumber="", setPhoneNumber] = useState("")
+  const [description="", setDescription] = useState("")
+
   const [date = "", setDate] = useState("");
   const [barber, setBarber] = useState(null);
   const [selectedSlot = "", setSelectedSlot] = useState("");
@@ -55,45 +59,53 @@ function BookAppointment() {
         (bookedSlot) => bookedSlot.slot === slot && bookedSlot.status !== "cancelled"
       )
       return (
-        <div
-          className="bg-white p-1 curser-pointer w-100 text-center"
-          onClick={() => setSelectedSlot(slot)}
-          style={{
-            border:
-              selectedSlot === slot ? "3px solid green" : "1px solid gray",
-            backgroundColor: isBooked ? "#d6d6d6" : "white" ,
-            pointerEvents: isBooked ? "none" : "auto",
-            cursor: isBooked ? "not-allowed" : "pointer"
-          }}
-        >
-          <span>
-            {moment(slot, "HH:mm A").format("hh:mm")} -{" "}
-            {moment(slot, "HH:mm A")
-              .add(slotDuration, "minutes")
-              .format("hh:mm")}
-          </span>
+        <div>
+          <div
+            className="bg-white p-1 curser-pointer w-100 text-center"
+            onClick={() => setSelectedSlot(slot)}
+            style={{
+              border:
+                selectedSlot === slot ? "3px solid green" : "1px solid gray",
+              backgroundColor: isBooked ? "#d6d6d6" : "white" ,
+              pointerEvents: isBooked ? "none" : "auto",
+              cursor: isBooked ? "not-allowed" : "pointer"
+            }}
+          >
+            <span>
+              {moment(slot, "HH:mm A").format("hh:mm")} -{" "}
+              {moment(slot, "HH:mm A")
+                .add(slotDuration, "minutes")
+                .format("hh:mm")}
+            </span>
+          </div>
+          
         </div>
+
       );
     });
   };
+
   const onBookAppointment = async()  => {
     try {
       dispatch(ShowLoader(true));
       const payload = {
         barberId: barber.id,
-        userId : JSON.parse(localStorage.getItem("user")).id,
+        userId : 1,
         date,
         slot : selectedSlot,
         barberName : `${barber.firstName} ${barber.lastName}`,
-        userName : JSON.parse(localStorage.getItem("user")).name,
+        userName,
+        email,
+        phoneNumber,
         bookedOn : moment().format("DD-MM-YYYY hh:mm A"),
-        problem,
+        description,
         status: "pending"
       };
+      console.log(payload.userName)
       const response = await BookBarberAppointment(payload);
       if (response.success) {
         message.success(response.message);
-        navigate("/profile");
+        navigate("/");
       } else {
         message.error(response.message);
       }
@@ -121,6 +133,7 @@ function BookAppointment() {
       message.error(error.message)
     }
   }
+
   useEffect(() => {
     getData();
   }, [id]);
@@ -202,12 +215,24 @@ function BookAppointment() {
           <div className="flex gap-2 scroll-horizontal">{date && getSlotsData()}</div>
 
           {selectedSlot && (
-            <div>
-              <textarea 
-                placeholder="What do you need?" 
-                value={problem} 
-                onChange={(e) => setProblem(e.target.value)} 
-                rows="10"></textarea>
+            <Form className="w-600 mx-auto">
+              <Form.Item label="Name" name="userName">
+                <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
+              </Form.Item>
+              <Form.Item label="Email" name="email">
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </Form.Item>
+              <Form.Item label="Phone Number" name="phoneNumber">
+                <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+              </Form.Item>
+              <Form.Item label="Message" name="message">
+                <textarea 
+                  placeholder="What do you need?" 
+                  value={description} 
+                  onChange={(e) => setDescription(e.target.value)} 
+                  rows="10">
+                </textarea>
+              </Form.Item>
               <div className="flex gap-2 justify-center my-3">
                 <button
                   className="outlined-btn"
@@ -220,7 +245,7 @@ function BookAppointment() {
               
                 <button className="contained-btn" onClick={onBookAppointment}>Book Appointment</button>
               </div>
-            </div>
+            </Form>
           )}
         </div>
       </div>
