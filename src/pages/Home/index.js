@@ -6,6 +6,7 @@ import { ShowLoader } from "../../redux/loaderSlice";
 import { GetAllBarbers } from "../../apicalls/barbers";
 
 const Home = () => {
+  const [search, setSearch] = useState("")
   const [filter, setFilter] = useState("all")
   const [barbers = [], setBarbers] = useState([]);
   const dispatch = useDispatch();
@@ -34,25 +35,25 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
-
+  
   const navigate = useNavigate();
-
+  
   const barbersFilter = barbers.filter((barber) => {
-    
-    console.log(barber.speciality)
-    if(filter === "all") {
-      return barber;
-    } else if(barber.speciality === filter) {
-      console.log("FILTER", filter)
+    if(barber.firstName.toLowerCase().includes(search.toLowerCase()) || barber.lastName.toLowerCase().includes(search)) {
+      if(filter === "all") {
+        return barber;
+      } else if(barber.speciality === filter) {
         return barber
+      }
     }
   });
+
 
   return (
     <div>
       <div className="flex justify-between">
         <div>
-          <input placeholder="Search barbers" className="w-400 rounded" />
+          <input placeholder="Search barbers" onChange={(e) => setSearch(e.target.value)}  className="w-400 rounded" />
         </div>
         <div className="flex">
           <label htmlFor="services">Filter by services:</label>
