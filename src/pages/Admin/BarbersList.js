@@ -71,6 +71,10 @@ function BarbersList() {
             dataIndex: "experience"
         },
         {
+            title: "Speciality",
+            dataIndex: "speciality"
+        },
+        {
             title: "Status",
             dataIndex: "status",
             render: (text, record) => {

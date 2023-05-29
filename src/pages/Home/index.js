@@ -38,9 +38,12 @@ const Home = () => {
   const navigate = useNavigate();
 
   const barbersFilter = barbers.filter((barber) => {
-    if(barber.role === filter) {
-        return barber;
-    } else if(filter === "all") {
+    
+    console.log(barber.speciality)
+    if(filter === "all") {
+      return barber;
+    } else if(barber.speciality === filter) {
+      console.log("FILTER", filter)
         return barber
     }
   });
@@ -52,15 +55,15 @@ const Home = () => {
           <input placeholder="Search barbers" className="w-400 rounded" />
         </div>
         <div className="flex">
-        <label htmlFor="services">Filter by services:</label>
+          <label htmlFor="services">Filter by services:</label>
           <select name="services" id="services" onChange={handleChangeFilter}>
-            <option  value="all">All</option>
+            <option value="all">All</option>
             <option value="hair">Hair</option>
             <option value="beard">Beard</option>
             <option value="face">Face</option>
           </select>
         </div>
-        {user?.role !== "barber" && (
+        {user?.role === "user" && (
           <button
             className="outlined-btn"
             onClick={() => navigate("/apply-barber")}
@@ -74,7 +77,6 @@ const Home = () => {
           {barbersFilter.map((barber) => {
             return (
               <Col span={8}>
-                {console.log(barber)}
                 <div
                   className="bg-white p-1 flex-col gap-1 cursor-pointer" 
                   onClick={() => navigate(`/book-appointment/${barber.id}`)}
@@ -92,8 +94,7 @@ const Home = () => {
                       <b>Experience:</b>
                     </h4>
                     <h4>
-                      {barber.experience}
-                      Years
+                      {barber.experience} Years
                     </h4>
                   </div>
                   <div className="flex justify-between w-full">
@@ -107,6 +108,12 @@ const Home = () => {
                       <b>Phone:</b>
                     </h4>
                     <h4>{barber.phone}</h4>
+                  </div>
+                  <div className="flex justify-between w-full">
+                    <h4>
+                      <b>Speciality:</b>
+                    </h4>
+                    <h4 className="uppercase">{barber.speciality}</h4>
                   </div>
                 </div>
               </Col>

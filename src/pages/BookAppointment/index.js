@@ -11,6 +11,7 @@ function BookAppointment() {
   const [userName="", setUserName] = useState("")
   const [email="", setEmail] = useState("")
   const [phoneNumber="", setPhoneNumber] = useState("")
+  const [cardNumber="", setCardNumber] = useState("")
   const [description="", setDescription] = useState("")
 
   const [date = "", setDate] = useState("");
@@ -27,6 +28,7 @@ function BookAppointment() {
       const response = await GetBarberById(id);
       if (response.success) {
         setBarber(response.data);
+        console.log(response.data)
       } else {
         message.error(response.message);
       }
@@ -90,13 +92,14 @@ function BookAppointment() {
       dispatch(ShowLoader(true));
       const payload = {
         barberId: barber.id,
-        userId : 1,
+        userId : 1, // vredo je tak hmmm :P
         date,
         slot : selectedSlot,
         barberName : `${barber.firstName} ${barber.lastName}`,
         userName,
         email,
         phoneNumber,
+        cardNumber,
         bookedOn : moment().format("DD-MM-YYYY hh:mm A"),
         description,
         status: "pending"
@@ -183,12 +186,12 @@ function BookAppointment() {
             </h4>
             <h4>{barber.adress}</h4>
           </div>
-          {/* <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full">
             <h4>
-              <b>Fee:</b>
+              <b>Speciality:</b>
             </h4>
-            <h4>{barber.fee}€ Per Session</h4>
-          </div> */}
+            <h4>{barber.speciality}</h4>
+          </div>
           <div className="flex justify-between w-full">
             <h4>
               <b>Days Available:</b>
@@ -215,7 +218,7 @@ function BookAppointment() {
           <div className="flex gap-2 scroll-horizontal">{date && getSlotsData()}</div>
 
           {selectedSlot && (
-            <Form className="w-600 mx-auto">
+            <Form className="w-600 my-3 mx-auto">
               <Form.Item label="Name" name="userName">
                 <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
               </Form.Item>
@@ -232,6 +235,9 @@ function BookAppointment() {
                   onChange={(e) => setDescription(e.target.value)} 
                   rows="10">
                 </textarea>
+              </Form.Item>
+              <Form.Item label="Card Number" name="cardNumber">
+                <input type="number" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
               </Form.Item>
               <div className="flex gap-2 justify-center my-3">
                 <button

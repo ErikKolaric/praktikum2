@@ -198,6 +198,24 @@ function BarberForm() {
                 </Col>
                 <Col span={8}>
                   <Form.Item
+                    label="Speciality"
+                    name="speciality"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Required",
+                      },
+                    ]}
+                  >
+                    <select>
+                      <option value="male">Hair</option>
+                      <option value="female">Beard</option>
+                      <option value="female">Face</option>
+                    </select>
+                  </Form.Item>
+                </Col>
+                <Col span={8}>
+                  <Form.Item
                     label="Experience(years)"
                     name="experience"
                     rules={[
