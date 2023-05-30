@@ -24,7 +24,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+[![Main page Screen Shot][product-screenshot]]
 
 The Barber Shop is designed to enable barbers to offer their customers the convenience of electronically ordering services. Users can easily schedule appointments for desired services by selecting available time slots from a calendar. Prior to selecting a time slot, users are required to enter their payment card information to secure a deposit reservation (see details below).
 
@@ -102,10 +102,12 @@ Once the Ordering Service is up and running, users can register for an account, 
 
 ## Contact
 
-Emails: erik.kolaric@student.um.si  olga.jokic@student.um.si  rebeka.cep@student.um.si
+Emails: erik.kolaric@student.um.si olga.jokic@student.um.si rebeka.cep@student.um.si
 
 Project Link: https://github.com/ErikKolaric/praktikum2
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[product-screenshot]: images/screenshot.png
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[product-screenshot]: src/images/screenshot.png
