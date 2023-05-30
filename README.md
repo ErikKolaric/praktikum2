@@ -24,7 +24,7 @@
 
 ## About The Project
 
-[![Main page Screen Shot][product-screenshot]]
+![Main page Screen Shot][product-screenshot]
 
 The Barber Shop is designed to enable barbers to offer their customers the convenience of electronically ordering services. Users can easily schedule appointments for desired services by selecting available time slots from a calendar. Prior to selecting a time slot, users are required to enter their payment card information to secure a deposit reservation (see details below).
 
