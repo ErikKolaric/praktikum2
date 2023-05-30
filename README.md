@@ -24,9 +24,7 @@
 
 ## About The Project
 
-<a href="https://github.com/ErikKolaric/praktikum2">
-    <img src="images/screenshot.png" alt="Current main page" width="80" height="80">
-</a>
+[![Product Name Screen Shot][product-screenshot]]
 
 The Barber Shop is designed to enable barbers to offer their customers the convenience of electronically ordering services. Users can easily schedule appointments for desired services by selecting available time slots from a calendar. Prior to selecting a time slot, users are required to enter their payment card information to secure a deposit reservation (see details below).
 
@@ -69,9 +67,11 @@ To install and run the Ordering Service on your local environment, follow the st
 ```
 
 2. Navigate to the project directory:
+
 ```sh
    cd praktikum2
 ```
+
 3. Install dependencies
 
 ```sh
@@ -102,8 +102,10 @@ Once the Ordering Service is up and running, users can register for an account, 
 
 ## Contact
 
-erik.kolaric@student.um.si olga.jokic@student.um.si rebeka.cep@student.um.si 
+Emails: erik.kolaric@student.um.si  olga.jokic@student.um.si  rebeka.cep@student.um.si
 
 Project Link: https://github.com/ErikKolaric/praktikum2
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[product-screenshot]: images/screenshot.png
