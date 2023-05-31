@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from '../images/logo.png'
+import logo from "../images/logo.png";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
@@ -8,8 +8,11 @@ const ProtectedRoute = ({ children }) => {
   return (
     <div className="layout p-2">
       <div className="header bg-white p-2 flex justify-between items-center">
-        <h2 className="cursor-pointer flex items-center gap-3" onClick={() => navigate("/")}>
-          <img src={logo} alt="Logo"  width="40" height="40"/>
+        <h2
+          className="cursor-pointer flex items-center gap-3"
+          onClick={() => navigate("/")}
+        >
+          <img src={logo} alt="Logo" width="40" height="40" />
           <strong className="text-primary">BarberShop</strong>
         </h2>
         <div className="flex items-center gap-3">
@@ -26,13 +29,15 @@ const ProtectedRoute = ({ children }) => {
             </h3>
           </div>
           {!user && (
-            <i
-              className="ri-logout-box-r-line"
+            <button
+              className="cursor-pointer transparent "
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/login");
               }}
-            ></i>
+            >
+              LOGIN
+            </button>
           )}
           {user && (
             <i

@@ -74,8 +74,7 @@ function BarberForm() {
   }, []);
   return (
     <div className="bg-white p-2">
-      {!alreadyApplied ||
-        (alreadyApproved && (
+     
           <>
             <h3 className="uppercase my-2">
               {alreadyApproved
@@ -208,9 +207,9 @@ function BarberForm() {
                     ]}
                   >
                     <select>
-                      <option value="male">Hair</option>
-                      <option value="female">Beard</option>
-                      <option value="female">Face</option>
+                      <option value="hair">Hair</option>
+                      <option value="beard">Beard</option>
+                      <option value="face">Face</option>
                     </select>
                   </Form.Item>
                 </Col>
@@ -321,7 +320,6 @@ function BarberForm() {
               </div>
             </Form>
           </>
-        ))}
       {alreadyApplied && !alreadyApproved && (
         <div className="flex flex-col items-center gap-2">
           <h3 className="text-secondary">

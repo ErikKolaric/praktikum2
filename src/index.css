@@ -92,6 +92,10 @@ background-color: #d61355;
 .w-half {
   width: 50%;
 }
+.transparent {
+  background-color: transparent;
+  border: none;
+}
 .p-1 {
   padding: 10px;
 }
