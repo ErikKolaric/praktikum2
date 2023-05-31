@@ -74,8 +74,7 @@ function BarberForm() {
   }, []);
   return (
     <div className="bg-white p-2">
-      {!alreadyApplied ||
-        (alreadyApproved && (
+     
           <>
             <h3 className="uppercase my-2">
               {alreadyApproved
@@ -321,7 +320,6 @@ function BarberForm() {
               </div>
             </Form>
           </>
-        ))}
       {alreadyApplied && !alreadyApproved && (
         <div className="flex flex-col items-center gap-2">
           <h3 className="text-secondary">
