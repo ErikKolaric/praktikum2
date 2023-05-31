@@ -207,9 +207,9 @@ function BarberForm() {
                     ]}
                   >
                     <select>
-                      <option value="male">Hair</option>
-                      <option value="female">Beard</option>
-                      <option value="female">Face</option>
+                      <option value="hair">Hair</option>
+                      <option value="beard">Beard</option>
+                      <option value="face">Face</option>
                     </select>
                   </Form.Item>
                 </Col>
