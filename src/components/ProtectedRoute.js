@@ -24,13 +24,11 @@ const ProtectedRoute = ({ children }) => {
               </h3>
             </div>
             {!user && 
-              <i
-                className="ri-logout-box-r-line"
-                onClick={() => {
+              <button className="cursor-pointer transparent " onClick={() => {
                   localStorage.removeItem("user");
                   navigate("/login");
-                }}
-              ></i>}
+                }}>LOGIN</button>  
+            }
             {user && 
               <i
                 className="ri-logout-box-r-line"
