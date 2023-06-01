@@ -14,15 +14,36 @@ const ProtectedRoute = ({ children }) => {
         </h1>
         <div>
           <ul className="nav gap-2">
-            <li><button className="transparent cursor-pointer" onClick={() => navigate("/")}>HOME</button></li>
-            <li><button className="transparent cursor-pointer" onClick={() => navigate("/barbers")}>BARBERS</button></li>
-            <li><button className="transparent cursor-pointer" onClick={() => navigate("/about")}>ABOUT US</button></li>
+            <li>
+              <button
+                className="transparent cursor-pointer"
+                onClick={() => navigate("/")}
+              >
+                HOME
+              </button>
+            </li>
+            <li>
+              <button
+                className="transparent cursor-pointer"
+                onClick={() => navigate("/barbers")}
+              >
+                BARBERS
+              </button>
+            </li>
+            <li>
+              <button
+                className="transparent cursor-pointer"
+                onClick={() => navigate("/about")}
+              >
+                ABOUT US
+              </button>
+            </li>
           </ul>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">
             {user && <i className="ri-shield-user-line"></i>}
-            <h3
+            <span
               className="uppercase cursor-pointer underline"
               onClick={() => {
                 if (user.role === "admin") navigate("/admin");
@@ -30,7 +51,7 @@ const ProtectedRoute = ({ children }) => {
               }}
             >
               {user?.name}
-            </h3>
+            </span>
           </div>
           {!user && (
             <button
@@ -54,7 +75,7 @@ const ProtectedRoute = ({ children }) => {
           )}
         </div>
       </div>
-      <div className="content p-3 my-1">{children}</div>
+      <div className="content">{children}</div>
     </div>
   );
 };

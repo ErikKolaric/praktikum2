@@ -6,15 +6,15 @@ import { ShowLoader } from "../../redux/loaderSlice";
 import { GetAllBarbers } from "../../apicalls/barbers";
 
 const Home = () => {
-  const [search, setSearch] = useState("")
-  const [filter, setFilter] = useState("all")
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("all");
   const [barbers = [], setBarbers] = useState([]);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleChangeFilter = (e) => {
     setFilter(e.target.value);
-  }
+  };
 
   const getData = async () => {
     try {
@@ -35,25 +35,31 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
-  
+
   const navigate = useNavigate();
-  
+
   const barbersFilter = barbers.filter((barber) => {
-    if(barber.firstName.toLowerCase().includes(search.toLowerCase()) || barber.lastName.toLowerCase().includes(search)) {
-      if(filter === "all") {
+    if (
+      barber.firstName.toLowerCase().includes(search.toLowerCase()) ||
+      barber.lastName.toLowerCase().includes(search)
+    ) {
+      if (filter === "all") {
         return barber;
-      } else if(barber.speciality === filter) {
-        return barber
+      } else if (barber.speciality === filter) {
+        return barber;
       }
     }
   });
 
-
   return (
-    <div>
+    <div className="p-2">
       <div className="flex justify-between">
         <div>
-          <input placeholder="Search barbers" onChange={(e) => setSearch(e.target.value)}  className="w-400 rounded" />
+          <input
+            placeholder="Search barbers"
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-400 rounded"
+          />
         </div>
         <div className="flex">
           <label htmlFor="services">Filter by services:</label>
@@ -73,53 +79,51 @@ const Home = () => {
           </button>
         )}
       </div>
-        <Row gutter={[16, 16]} className="my-1 barbers">
-          {barbersFilter.map((barber) => {
-            return (
-              <Col span={8}>
-                <div
-                  className="bg-white p-1 flex-col gap-1 cursor-pointer" 
-                  onClick={() => navigate(`/book-appointment/${barber.id}`)}
-                >
-                  <div className="flex justify-between w-full" key={barber.id}>
-                    <h2 className="uppercase">
-                      {barber.firstName} {barber.lastName}
-                    </h2>
-                  </div>
-                  <br />
-                  <hr />
-                  <br />
-                  <div className="flex justify-between w-full">
-                    <h4>
-                      <b>Experience:</b>
-                    </h4>
-                    <h4>
-                      {barber.experience} Years
-                    </h4>
-                  </div>
-                  <div className="flex justify-between w-full">
-                    <h4>
-                      <b>Email:</b>
-                    </h4>
-                    <h4>{barber.email}</h4>
-                  </div>
-                  <div className="flex justify-between w-full">
-                    <h4>
-                      <b>Phone:</b>
-                    </h4>
-                    <h4>{barber.phone}</h4>
-                  </div>
-                  <div className="flex justify-between w-full">
-                    <h4>
-                      <b>Speciality:</b>
-                    </h4>
-                    <h4 className="uppercase">{barber.speciality}</h4>
-                  </div>
+      <Row gutter={[16, 16]} className="my-1 barbers">
+        {barbersFilter.map((barber) => {
+          return (
+            <Col span={8}>
+              <div
+                className="bg-white p-1 flex-col gap-1 cursor-pointer"
+                onClick={() => navigate(`/book-appointment/${barber.id}`)}
+              >
+                <div className="flex justify-between w-full" key={barber.id}>
+                  <h2 className="uppercase">
+                    {barber.firstName} {barber.lastName}
+                  </h2>
                 </div>
-              </Col>
-            );
-          })}
-        </Row>
+                <br />
+                <hr />
+                <br />
+                <div className="flex justify-between w-full">
+                  <h4>
+                    <b>Experience:</b>
+                  </h4>
+                  <h4>{barber.experience} Years</h4>
+                </div>
+                <div className="flex justify-between w-full">
+                  <h4>
+                    <b>Email:</b>
+                  </h4>
+                  <h4>{barber.email}</h4>
+                </div>
+                <div className="flex justify-between w-full">
+                  <h4>
+                    <b>Phone:</b>
+                  </h4>
+                  <h4>{barber.phone}</h4>
+                </div>
+                <div className="flex justify-between w-full">
+                  <h4>
+                    <b>Speciality:</b>
+                  </h4>
+                  <h4 className="uppercase">{barber.speciality}</h4>
+                </div>
+              </div>
+            </Col>
+          );
+        })}
+      </Row>
     </div>
   );
 };

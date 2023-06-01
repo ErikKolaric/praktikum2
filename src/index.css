@@ -1,18 +1,33 @@
-body, html {
-  background-color: #f0eeee;
+body,
+html {
+  background-color: #b7b7b7;
 }
-*{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-h1, h2, h3, h4, h5, h6, a, span, p {
-  color: #202020;
-  font-weight: 500;
-
+.red {
+  color: rgb(218, 64, 64);
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  font-weight: 500;
+}
+.shadow {
+  text-shadow: 2px 0 0 black;
+}
+.font-white {
+  color: white;
+}
 label {
   min-width: 200px;
   align-items: center;
@@ -20,23 +35,31 @@ label {
 }
 /* colors and backgrounds */
 .bg-white {
-  background-color: #fff;
+  background-color: white;
   box-shadow: 0 0 2px;
 }
 .text-primary {
-  color: #205e61
+  color: #205e61;
 }
 .text-secondary {
-  color: #d61355
+  color: #d61355;
 }
 .bg-primary {
   background-color: #205e61;
 }
 .bg-secondary {
-background-color: #d61355;
+  background-color: #d61355;
 }
 .rounded {
   border-radius: 20px;
+}
+.title {
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  text-align: center;
 }
 
 /* flex class */
@@ -62,18 +85,29 @@ background-color: #d61355;
   align-items: flex-end;
 }
 .gap-1 {
-  gap: 10px
+  gap: 10px;
 }
 .gap-2 {
-  gap: 20px
+  gap: 20px;
 }
 .gap-3 {
-  gap: 30px
+  gap: 30px;
 }
 
+.slika {
+  object-fit: cover;
+  width: 100%;
+  height: 700px;
+}
 /* heights and widths */
 .h-screen {
   height: 100vh;
+}
+.h-500 {
+  height: 500px;
+}
+.h-600 {
+  height: 6s00px;
 }
 .w-100 {
   min-width: 120px;
@@ -84,6 +118,7 @@ background-color: #d61355;
 .w-600 {
   width: 600px;
 }
+
 .w-full {
   width: 100%;
 }
@@ -139,22 +174,30 @@ background-color: #d61355;
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.mx-3 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
 
 /* form elements  */
-input, textarea, select {
+input,
+textarea,
+select {
   height: 45px !important;
   border: 1px solid #909090;
   width: 100%;
   padding-left: 15px;
   border-radius: 4px;
-} 
-input:focus, textarea, select {
+}
+input:focus,
+textarea,
+select {
   outline: none;
-  border: 1px solid #494949
+  border: 1px solid #494949;
 }
 textarea {
   min-height: 100px;
@@ -220,14 +263,38 @@ li {
   background-color: #0000009a;
   z-index: 100;
 }
-
+.z {
+  z-index: 100;
+}
 hr {
   border: 1px solid #d3d2d2;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  justify-content: center;
+}
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.friz {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* za mobile */
 @media screen and (max-width: 600px) {
   .barbers {
-    
   }
 }
