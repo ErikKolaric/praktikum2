@@ -2,6 +2,7 @@ body, html {
   background-color: #f0eeee;
 }
 *{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,15 +10,14 @@ body, html {
 h1, h2, h3, h4, h5, h6, a, span, p {
   color: #202020;
   font-weight: 500;
+
 }
 
 label {
-  min-width: 140px;
+  min-width: 200px;
   align-items: center;
-  padding-right: 20px;
   display: flex;
 }
-
 /* colors and backgrounds */
 .bg-white {
   background-color: #fff;
