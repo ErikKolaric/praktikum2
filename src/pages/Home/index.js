@@ -73,8 +73,7 @@ const Home = () => {
           </button>
         )}
       </div>
-      <div>
-        <Row gutter={[16, 16]} className="my-1">
+        <Row gutter={[16, 16]} className="my-1 barbers">
           {barbersFilter.map((barber) => {
             return (
               <Col span={8}>
@@ -121,7 +120,6 @@ const Home = () => {
             );
           })}
         </Row>
-      </div>
     </div>
   );
 };

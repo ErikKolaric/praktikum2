@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 import BarberForm from './pages/BarberForm';
 import Admin from './pages/Admin';
 import BookAppointment from './pages/BookAppointment';
+import Welcome from './pages/Welcome';
+import About from './pages/About';
 
 function App() {
   const { loading } = useSelector(state => state.loader)
@@ -19,13 +21,15 @@ function App() {
       {loading && <Spinner />}
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<ProtectedRoute><Welcome /></ProtectedRoute>} />
           <Route path='/login' element={<ProtectedRoute><Login /></ProtectedRoute>} />
           <Route path="/register" element={<ProtectedRoute><Register /></ProtectedRoute>} />
-          <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path='/barbers' element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path='/book-appointment/:id' element={<ProtectedRoute><BookAppointment /></ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path='/apply-barber' element={<ProtectedRoute><BarberForm /></ProtectedRoute>} />
           <Route path='/admin' element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+          <Route path='/about' element={<ProtectedRoute><About /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </div>

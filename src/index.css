@@ -21,8 +21,6 @@ label {
 /* colors and backgrounds */
 .bg-white {
   background-color: #fff;
-  border-radius: 2px !important;
-  border: 1px solid #d3d2d2;
   box-shadow: 0 0 2px;
 }
 .text-primary {
@@ -114,6 +112,9 @@ background-color: #d61355;
 .m-3 {
   margin: 30px;
 }
+.pb-3 {
+  padding-bottom: 30px;
+}
 .py-1 {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -196,7 +197,15 @@ textarea {
 .text-center {
   text-align: center;
 }
-
+.nav {
+  display: flex;
+  justify-content: center;
+}
+li {
+  padding-left: 10px;
+  padding-right: 10px;
+  list-style-type: none;
+}
 /* antd overiding*/
 .ant-form-item {
   margin-bottom: 8px !important;
@@ -214,4 +223,11 @@ textarea {
 
 hr {
   border: 1px solid #d3d2d2;
+}
+
+/* za mobile */
+@media screen and (max-width: 600px) {
+  .barbers {
+    
+  }
 }

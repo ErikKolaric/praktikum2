@@ -34,7 +34,7 @@ const Login = () => {
         if(user) navigate("/")
     }, [])
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center my-3">
             <Form layout="vertical" className="w-400 bg-white p-2" onFinish={onFinish}>
                 <h2 className="uppercase my-1">
                     <strong>Barber Shop Login</strong>
