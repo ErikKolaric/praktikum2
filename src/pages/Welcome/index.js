@@ -27,11 +27,9 @@ const Welcome = () => {
       </div>
       <Carousel
         className="h-700"
-        effect="fade"
         autoplaySpeed={3000}
-        autoplay="true"
-        pauseOnHover="false"
-        swipeToSlide="true"
+        autoplay
+        pauseOnHover={false}
       >
         <img className="slika" src={barber} alt="br1" />
         <img className="slika" src={barber2} alt="hair1" />
