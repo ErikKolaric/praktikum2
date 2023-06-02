@@ -1,7 +1,4 @@
 import React from "react";
-import piling from "../../images/piling.jpg";
-import brada1 from "../../images/brada1.jpg";
-import hair1 from "../../images/hair1.jpg";
 import barber from "../../images/barber.jpeg";
 import barber2 from "../../images/barber2.jpeg";
 import barber3 from "../../images/barber3.jpeg";
@@ -15,6 +12,27 @@ import friz5 from "../../images/friz5.jpeg";
 import friz6 from "../../images/friz6.jpeg";
 import { Carousel } from "antd";
 import { useNavigate } from "react-router-dom";
+
+export const podatki = [
+  {
+    id: 1,
+    fotka: barber3,
+    naziv: "Hair",
+    opis: "opis opis opis opis opis opis opis ",
+  },
+  {
+    id: 2,
+    fotka: barber2,
+    naziv: "Beard",
+    opis: "opis opis opis opis opis opis opis ",
+  },
+  {
+    id: 3,
+    fotka: barber5,
+    naziv: "Face",
+    opis: "opis opis opis opis opis opis opis ",
+  },
+];
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -37,6 +55,19 @@ const Welcome = () => {
         <img className="slika" src={barber4} alt="piling" />
         <img className="slika" src={barber5} alt="piling" />
       </Carousel>
+
+      <div className="text-center my-3">
+        <h1>SERVICES WE OFFER</h1>
+        <div className="storitve py-3 my-3">
+          {podatki.map((podatek) => (
+            <div className="storitev" key={podatek.id}>
+              <img className="foto" src={podatek.fotka}></img>
+              <h2>{podatek.naziv}</h2>
+              <h2>{podatek.opis}</h2>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="py-3 mx-auto">
         <h1 className="title p-3 w-full z">LATEST WORK</h1>
         <div className="grid-container">

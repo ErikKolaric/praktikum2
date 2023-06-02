@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="layout">
-      <div className="header bg-white p-2 flex justify-between items-center">
+      <div className="header bg-brown p-2 flex justify-between items-center">
         <h1 className="flex items-center gap-1">
           <img src={logo} alt="Logo" width="50" height="50" />
           <strong className="">BarberShop</strong>
@@ -76,6 +76,7 @@ const ProtectedRoute = ({ children }) => {
         </div>
       </div>
       <div className="content">{children}</div>
+      <div className="h-500 bg-white text-center py-3">FOOTER</div>
     </div>
   );
 };

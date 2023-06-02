@@ -52,7 +52,7 @@ const Home = () => {
   });
 
   return (
-    <div className="p-2">
+    <div className="p-2 h-screen">
       <div className="flex justify-between">
         <div>
           <input
@@ -63,7 +63,12 @@ const Home = () => {
         </div>
         <div className="flex">
           <label htmlFor="services">Filter by services:</label>
-          <select name="services" id="services" onChange={handleChangeFilter}>
+          <select
+            className="rounded p-1"
+            name="services"
+            id="services"
+            onChange={handleChangeFilter}
+          >
             <option value="all">All</option>
             <option value="hair">Hair</option>
             <option value="beard">Beard</option>
@@ -84,7 +89,7 @@ const Home = () => {
           return (
             <Col span={8}>
               <div
-                className="bg-white p-1 flex-col gap-1 cursor-pointer"
+                className="bg-white p-2 rounded flex-col gap-1 cursor-pointer"
                 onClick={() => navigate(`/book-appointment/${barber.id}`)}
               >
                 <div className="flex justify-between w-full" key={barber.id}>

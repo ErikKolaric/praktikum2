@@ -1,6 +1,6 @@
 body,
 html {
-  background-color: #b7b7b7;
+  background-color: #c9b8a6;
 }
 * {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -9,6 +9,10 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+p {
+  font-size: larger;
+}
+
 .red {
   color: rgb(218, 64, 64);
 }
@@ -35,7 +39,15 @@ label {
 }
 /* colors and backgrounds */
 .bg-white {
-  background-color: white;
+  background-color: rgb(225, 225, 225);
+  box-shadow: 0 0 2px;
+}
+.bg-brown {
+  background-color: #96897b;
+  box-shadow: 0 0 2px;
+}
+.bg-dark-brown {
+  background-color: #967d69;
   box-shadow: 0 0 2px;
 }
 .text-primary {
@@ -52,6 +64,9 @@ label {
 }
 .rounded {
   border-radius: 20px;
+}
+.rounded-sm {
+  border-radius: 10px;
 }
 .title {
   left: 0;
@@ -98,7 +113,16 @@ label {
   object-fit: cover;
   width: 100%;
   height: 700px;
+  opacity: 90%;
 }
+.team {
+  object-fit: cover;
+  width: 100%;
+  height: 700px;
+  opacity: 90%;
+  object-position: 100% 0;
+}
+
 /* heights and widths */
 .h-screen {
   height: 100vh;
@@ -291,9 +315,173 @@ hr {
   height: 300px;
   object-fit: cover;
   border-radius: 10px;
+  opacity: 90%;
+}
+
+.storitev {
+  width: 310px;
+  padding-bottom: 15px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  text-align: center;
+  background-color: rgba(73, 48, 18, 0.307);
+}
+
+.storitve {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.foto {
+  opacity: 90%;
+  border-radius: 10%;
+  object-fit: cover;
+  height: 270px;
+  width: 270px;
+  margin-bottom: 15px;
+  margin: 15px;
+}
+
+.naprijed {
+  position: absolute;
+  top: 45%;
+  right: 10px;
+  font-size: 30px;
+  color: rgba(107, 107, 107, 0.8);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.otraga {
+  position: absolute;
+  top: 45%;
+  left: 10px;
+  font-size: 30px;
+  color: rgba(107, 107, 107, 0.8);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mobile-user {
+  display: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.1);
 }
 
 /* za mobile */
+@media only screen and (max-width: 900px) {
+  .foto {
+    width: 160px;
+    height: 160px;
+  }
+
+  .storitev {
+    width: 200px;
+  }
+
+  #fotka {
+    width: 80%;
+  }
+
+  #lijevi {
+    width: 80%;
+  }
+
+  #desni {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  #tekst {
+    display: block;
+    flex-direction: unset;
+  }
+
+  .tekst {
+    font-size: 20px;
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-user {
+    display: block;
+    padding-top: 20px;
+  }
+
+  .prikaz {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+  }
+
+  .storitev {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 210px;
+    height: auto;
+  }
+
+  .tekst {
+    font-size: 20px;
+    padding: 5px;
+  }
+  .animacija {
+    transition: 0.6s;
+    transform: translateY(-180px) rotate(1turn);
+  }
+
+  .image {
+    width: 1000px;
+    height: 600px;
+    border-radius: 10px;
+  }
+
+  .naprijed {
+    font-size: 30px;
+    color: rgba(107, 107, 107, 0.8);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .otraga {
+    position: absolute;
+    top: 45%;
+    left: 10px;
+    font-size: 30px;
+    color: rgba(107, 107, 107, 0.8);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.1);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .barbers {
   }

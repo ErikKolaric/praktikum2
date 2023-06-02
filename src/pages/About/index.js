@@ -1,72 +1,49 @@
 import React from "react";
-import stef  from "../../images/stef.jpg";
-import  jess  from "../../images/jess.png";
-import  naslovna  from "../../images/naslovna.jpg";
+import team from "../../images/team.jpeg";
 
-
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { Button, Carousel } from "antd";
-
-
-//import "./Home.css";
-
-//HEADER, PARAGRAFI, GOOGLE MAPS LOKACIJA NASA, KONTAKT ITD.
-//const About = () => {
-   // return(<div><h1>ABOUT US</h1></div>)
-
-class About extends React.Component {
-  onRedirectHandler = () => {
-   // this.props.history.push(Routes.SIGNUP);
-  };
-
-  render() {
-    const { isAuthenticated } = this.props;
-    
-    return (
-      <div className="wrapper wrapper--home d-flex space-between align-items-center">
-        <div>
-          <h2 className="title">
-            Beard Specialists, Hair, Face for Men 
-          </h2>
-          <img  />
-          
-        </div>
-        <div>
-          <p className="title">
-          The barber salon was created in 2017 as a result of a long-conceived plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany. It was founded by Stef Mike and Mark Held, who are considered the best barbers in Europe. We guarantee you quality! The pleasure is ours!          </p>
-          
-        </div>
-        
-        <Carousel dotPosition="bottom" autoplay="true">
-          <div className="slide">
-          <img src={stef} alt="stef" width={600} height={500}/>
-            <h3>Stef Majk</h3>
-            <div>Hair Specialist</div>
-          </div>
-          <div>
-          <img src={jess} alt="jess" width={400} height={400}/>
-        
-            <h3>Mark Held</h3>
-            <div>
-              <br /> Beard Specialist
-            </div>
-          </div>
-           
-        </Carousel>
+const About = () => {
+  return (
+    <div className="mx-auto p-2">
+      <h1 className="title p-2">Beard Specialists, Hair, Face for Men</h1>
+      <img className="team" src={team} />
+      <p className="title p-3">
+        The barber salon was created in 2017 as a result of a long-conceived
+        plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany.
+        It was founded by Stef Mike and Mark Held, who are considered the best
+        barbers in Europe. We guarantee you quality! The pleasure is ours!
+      </p>
+      <p className="title p-3">
+        The barber salon was created in 2017 as a result of a long-conceived
+        plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany.
+        It was founded by Stef Mike and Mark Held, who are considered the best
+        barbers in Europe. We guarantee you quality! The pleasure is ours!
+      </p>
+      <p className="title p-3">
+        The barber salon was created in 2017 as a result of a long-conceived
+        plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany.
+        It was founded by Stef Mike and Mark Held, who are considered the best
+        barbers in Europe. We guarantee you quality! The pleasure is ours!
+      </p>
+      <div className="mx-auto text-center ">
+        <h2 className="p-2">WHERE ARE WE LOCATED?</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5316.756060879297!2d16.3914336935791!3d48.2185949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d07a8305c13b1%3A0xdfc64edaf8f890!2sMoses&#39;Barbershop!5e0!3m2!1shr!2shr!4v1685713150383!5m2!1shr!2shr"
+          width="800"
+          height="600"
+          allowfullscreen=""
+          className="rounded-sm my-2"
+          loading="lazy"
+        ></iframe>
       </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: state.auth.token !== null,
-  };
+      <div className="mx-auto text-center my-3">
+        <h2 className="py-3">CONTACT US</h2>
+        <p>kontakt</p>
+        <p>kontakt</p>
+        <p>kontakt</p>
+        <p>kontakt</p>
+      </div>
+    </div>
+  );
 };
 
-
-
-
-
-export default About
+export default About;
