@@ -127,6 +127,10 @@ label {
 .h-screen {
   height: 100vh;
 }
+.w-screen {
+  width: 100%;
+  max-width: 2160px;
+}
 .h-500 {
   height: 500px;
 }

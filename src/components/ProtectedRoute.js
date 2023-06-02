@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   return (
-    <div className="layout">
+    <div className="layout w-screen mx-auto">
       <div className="header bg-brown p-2 flex justify-between items-center">
         <h1 className="flex items-center gap-1">
           <img src={logo} alt="Logo" width="50" height="50" />
