@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom/dist";
 import { ShowLoader } from "../../redux/loaderSlice";
 import { GetBarberById } from "../../apicalls/barbers";
-import { Form, message } from "antd";
+import { message } from "antd";
 import moment from "moment";
-import { BookBarberAppointment, GetBarberAppointmentsOnDate } from "../../apicalls/appointments";
+import {
+  BookBarberAppointment,
+  GetBarberAppointmentsOnDate,
+} from "../../apicalls/appointments";
+import emailjs from "@emailjs/browser";
 
 function BookAppointment() {
-  const [userName="", setUserName] = useState("")
-  const [email="", setEmail] = useState("")
-  const [phoneNumber="", setPhoneNumber] = useState("")
-  const [cardNumber="", setCardNumber] = useState("")
-  const [description="", setDescription] = useState("")
+  const [userName = "", setUserName] = useState("");
+  const [email = "", setEmail] = useState("");
+  const [phoneNumber = "", setPhoneNumber] = useState("");
+  const [cardNumber = "", setCardNumber] = useState("");
+  const [description = "", setDescription] = useState("");
 
   const [date = "", setDate] = useState("");
   const [barber, setBarber] = useState(null);
@@ -20,7 +24,29 @@ function BookAppointment() {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [bookedSlots = [], setBookedSlots] = useState([])
+  const [bookedSlots = [], setBookedSlots] = useState([]);
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_qu3x28k",
+        "contact_form",
+        e.target,
+        "LWe-UrSziUXrStoT7"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+  };
 
   const getData = async () => {
     try {
@@ -28,7 +54,6 @@ function BookAppointment() {
       const response = await GetBarberById(id);
       if (response.success) {
         setBarber(response.data);
-        console.log(response.data)
       } else {
         message.error(response.message);
       }
@@ -50,7 +75,7 @@ function BookAppointment() {
 
     let startTime = moment(barber.startTime, "HH:mm");
     let endTime = moment(barber.endTime, "HH:mm");
-    let slotDuration = 30; 
+    let slotDuration = 30;
     const slots = [];
     while (startTime < endTime) {
       slots.push(startTime.format("HH:mm"));
@@ -58,8 +83,9 @@ function BookAppointment() {
     }
     return slots.map((slot) => {
       const isBooked = bookedSlots.find(
-        (bookedSlot) => bookedSlot.slot === slot && bookedSlot.status !== "cancelled"
-      )
+        (bookedSlot) =>
+          bookedSlot.slot === slot && bookedSlot.status !== "cancelled"
+      );
       return (
         <div>
           <div
@@ -68,9 +94,9 @@ function BookAppointment() {
             style={{
               border:
                 selectedSlot === slot ? "3px solid green" : "1px solid gray",
-              backgroundColor: isBooked ? "#d6d6d6" : "white" ,
+              backgroundColor: isBooked ? "#d6d6d6" : "white",
               pointerEvents: isBooked ? "none" : "auto",
-              cursor: isBooked ? "not-allowed" : "pointer"
+              cursor: isBooked ? "not-allowed" : "pointer",
             }}
           >
             <span>
@@ -80,31 +106,28 @@ function BookAppointment() {
                 .format("hh:mm")}
             </span>
           </div>
-          
         </div>
-
       );
     });
   };
 
-  const onBookAppointment = async()  => {
+  const onBookAppointment = async () => {
     try {
       dispatch(ShowLoader(true));
       const payload = {
         barberId: barber.id,
-        userId : 1, // vredo je tak hmmm :P
+        userId: 1, // vredo je tak hmmm :P
         date,
-        slot : selectedSlot,
-        barberName : `${barber.firstName} ${barber.lastName}`,
+        slot: selectedSlot,
+        barberName: `${barber.firstName} ${barber.lastName}`,
         userName,
         email,
         phoneNumber,
         cardNumber,
-        bookedOn : moment().format("DD-MM-YYYY hh:mm A"),
+        bookedOn: moment().format("DD-MM-YYYY hh:mm A"),
         description,
-        status: "pending"
+        status: "approved",
       };
-      console.log(payload.userName)
       const response = await BookBarberAppointment(payload);
       if (response.success) {
         message.success(response.message);
@@ -113,39 +136,37 @@ function BookAppointment() {
         message.error(response.message);
       }
       dispatch(ShowLoader(false));
+    } catch (error) {
+      message.error(error.message);
+      dispatch(ShowLoader(false));
     }
-      catch (error){
-        message.error(error.message);
-        dispatch(ShowLoader(false));
-      }
-
-  }
-  const getBookedSlots = async() => {
+  };
+  const getBookedSlots = async () => {
     try {
-      dispatch(ShowLoader(true))
-      const response = await GetBarberAppointmentsOnDate(id, date)
-      dispatch(ShowLoader(false))
-      if(response.success) {
-        console.log(response.data)
-        setBookedSlots(response.data)
+      dispatch(ShowLoader(true));
+      const response = await GetBarberAppointmentsOnDate(id, date);
+      dispatch(ShowLoader(false));
+      if (response.success) {
+        console.log(response.data);
+        setBookedSlots(response.data);
       } else {
-        message.error(response.message)
+        message.error(response.message);
       }
     } catch (error) {
-      dispatch(ShowLoader(false))
-      message.error(error.message)
+      dispatch(ShowLoader(false));
+      message.error(error.message);
     }
-  }
+  };
 
   useEffect(() => {
     getData();
   }, [id]);
 
   useEffect(() => {
-    if(date) {
-      getBookedSlots()
+    if (date) {
+      getBookedSlots();
     }
-  }, [date])
+  }, [date]);
 
   return (
     barber && (
@@ -215,43 +236,73 @@ function BookAppointment() {
               />
             </div>
           </div>
-          <div className="flex gap-2 scroll-horizontal">{date && getSlotsData()}</div>
+          <div className="flex gap-2 scroll-horizontal">
+            {date && getSlotsData()}
+          </div>
 
           {selectedSlot && (
-            <Form className="w-600 my-3 mx-auto">
-              <Form.Item label="Name" name="userName">
-                <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
-              </Form.Item>
-              <Form.Item label="Email" name="email">
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-              </Form.Item>
-              <Form.Item label="Phone Number" name="phoneNumber">
-                <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-              </Form.Item>
-              <Form.Item label="Message" name="message">
-                <textarea 
-                  placeholder="What do you need?" 
-                  value={description} 
-                  onChange={(e) => setDescription(e.target.value)} 
-                  rows="10">
-                </textarea>
-              </Form.Item>
-              <Form.Item label="Card Number" name="cardNumber">
-                <input type="number" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
-              </Form.Item>
-              <div className="flex gap-2 justify-center my-3">
-                <button
-                  className="outlined-btn"
-                  onClick={() => {
-                    navigate("/");
-                  }}
-                >
-                  Cancel
-                </button>
-              
-                <button className="contained-btn" onClick={onBookAppointment}>Book Appointment</button>
-              </div>
-            </Form>
+            <form
+              className="w-600 my-3 mx-auto"
+              ref={form}
+              onSubmit={sendEmail}
+            >
+              <input
+                className="none"
+                type="text"
+                name="barber"
+                value={barber.firstName + " " + barber.lastName}
+              />
+              <input className="none" type="text" name="date" value={date} />
+              <input
+                className="none"
+                type="text"
+                name="selectedSlot"
+                value={selectedSlot}
+              />
+              <label>Name:</label>
+              <input
+                type="text"
+                value={userName}
+                name="userName"
+                onChange={(e) => setUserName(e.target.value)}
+              />{" "}
+              <label>Email:</label>
+              <input
+                type="text"
+                value={email}
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />{" "}
+              <label>Phone Number:</label>
+              <input
+                type="number"
+                value={phoneNumber}
+                name="phoneNumber"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />{" "}
+              <label>Message:</label>
+              <textarea
+                placeholder="What do you need?"
+                value={description}
+                name="message"
+                onChange={(e) => setDescription(e.target.value)}
+                rows="10"
+              ></textarea>
+              <label>Card Number:</label>
+              <input
+                type="number"
+                value={cardNumber}
+                name="cardNumber"
+                onChange={(e) => setCardNumber(e.target.value)}
+              />
+              <input
+                className="contained-btn"
+                type="submit"
+                onClick={onBookAppointment}
+                placeholder="Book Appointment"
+              />
+              {console.log(form)}
+            </form>
           )}
         </div>
       </div>

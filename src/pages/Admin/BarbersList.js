@@ -5,134 +5,153 @@ import { GetAllBarbers, UpdateBarber } from "../../apicalls/barbers";
 import { ShowLoader } from "../../redux/loaderSlice";
 
 function BarbersList() {
-    const [barbers, setBarbers] = useState([])
+  const [barbers, setBarbers] = useState([]);
 
-    const dispatch = useDispatch()
-    const getData = async () => {
-        try {
-            dispatch(ShowLoader(true));
-            const response = await GetAllBarbers();
-            dispatch(ShowLoader(false));
-            if(response.success) {
-                setBarbers(response.data)
-            } else {
-                throw new Error(response.message)
-            }
-        } catch (error) {
-            dispatch(ShowLoader(false))
-            message.error(error.message)
-        }
+  const dispatch = useDispatch();
+  const getData = async () => {
+    try {
+      dispatch(ShowLoader(true));
+      const response = await GetAllBarbers();
+      dispatch(ShowLoader(false));
+      if (response.success) {
+        setBarbers(response.data);
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      dispatch(ShowLoader(false));
+      message.error(error.message);
     }
+  };
 
-    const changeStatus = async (payload) => {
-        try {
-            dispatch(ShowLoader(true))
-            const response = await UpdateBarber(payload)
-            dispatch(ShowLoader(false))
-            if(response.success) {
-                message.success(response.message)
-                getData()
-            } else {
-                throw new Error(response.message)
-            }
-        } catch (error) {
-            message.error(error.message )
-            dispatch(ShowLoader(false))
-        }
+  const changeStatus = async (payload) => {
+    try {
+      dispatch(ShowLoader(true));
+      const response = await UpdateBarber(payload);
+      dispatch(ShowLoader(false));
+      if (response.success) {
+        message.success(response.message);
+        getData();
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      message.error(error.message);
+      dispatch(ShowLoader(false));
     }
+  };
 
-    useEffect(() => {
-        getData()
-    }, [])
+  useEffect(() => {
+    getData();
+  }, []);
 
-    const columns = [
-        {
-            title: "First Name",
-            dataIndex: "firstName"
-        },
-        {
-            title: "Last Name",
-            dataIndex: "lastName"
-        },
-        {
-            title: "Email",
-            dataIndex: "email"
-        },
-        {
-            title: "Phone",
-            dataIndex: "phone"
-        },
-        {
-            title: "Gender",
-            dataIndex: "gender"
-        },
-        {
-            title: "Experience",
-            dataIndex: "experience"
-        },
-        {
-            title: "Speciality",
-            dataIndex: "speciality"
-        },
-        {
-            title: "Status",
-            dataIndex: "status",
-            render: (text, record) => {
-                return text.toUpperCase()
-            }
-        },
-        {
-            title: "Actions",
-            dataIndex: "actions",
-            render: (text, record) => {
-                if(record.status === "pending") {
-                    return (
-                        <div className="flex gap-1">
-                            <span className="underline cursor-pointer"
-                                onClick={() => changeStatus({
-                                    ...record,
-                                    status: "rejected"
-                                })}
-                            >Reject</span>
-                            <span className="underline cursor-pointer"
-                                onClick={() => changeStatus({
-                                    ...record,
-                                    status: "approved"
-                                })}
-                            >Approve</span>
-                        </div>
-                    )
-                } 
-                if(record.status === "approved") {
-                    return (
-                        <div className="flex gap-1">
-                            <span className="underline cursor-pointer"
-                                onClick={() => changeStatus({
-                                    ...record,
-                                    status: "blocked"
-                                })}
-                            >Block</span>
-                        </div>
-                    )
-                } 
-                if(record.status === "blocked") {
-                    return (
-                        <div className="flex gap-1">
-                            <span className="underline cursor-pointer"
-                                onClick={() => changeStatus({
-                                    ...record,
-                                    status: "approved"
-                                })}
-                            >Unblock</span>
-                        </div>
-                    )
-                } 
-            }
+  const columns = [
+    {
+      title: "First Name",
+      dataIndex: "firstName",
+    },
+    {
+      title: "Last Name",
+      dataIndex: "lastName",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+    },
+    {
+      title: "Experience",
+      dataIndex: "experience",
+    },
+    {
+      title: "Speciality",
+      dataIndex: "speciality",
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      render: (text, record) => {
+        return text.toUpperCase();
+      },
+    },
+    {
+      title: "Actions",
+      dataIndex: "actions",
+      render: (text, record) => {
+        if (record.status === "pending") {
+          return (
+            <div className="flex gap-1">
+              <span
+                className="underline cursor-pointer"
+                onClick={() =>
+                  changeStatus({
+                    ...record,
+                    status: "rejected",
+                  })
+                }
+              >
+                Reject
+              </span>
+              <span
+                className="underline cursor-pointer"
+                onClick={() =>
+                  changeStatus({
+                    ...record,
+                    status: "approved",
+                  })
+                }
+              >
+                Approve
+              </span>
+            </div>
+          );
         }
-    ]
+        if (record.status === "approved") {
+          return (
+            <div className="flex gap-1">
+              <span
+                className="underline cursor-pointer"
+                onClick={() =>
+                  changeStatus({
+                    ...record,
+                    status: "rejected",
+                  })
+                }
+              >
+                Reject
+              </span>
+            </div>
+          );
+        }
+        if (record.status === "blocked") {
+          return (
+            <div className="flex gap-1">
+              <span
+                className="underline cursor-pointer"
+                onClick={() =>
+                  changeStatus({
+                    ...record,
+                    status: "approved",
+                  })
+                }
+              >
+                Unblock
+              </span>
+            </div>
+          );
+        }
+      },
+    },
+  ];
 
-    return <Table columns={columns} dataSource={barbers}></Table>
-
+  return <Table columns={columns} dataSource={barbers}></Table>;
 }
 
 export default BarbersList;

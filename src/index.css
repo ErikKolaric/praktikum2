@@ -99,6 +99,9 @@ label {
 .items-end {
   align-items: flex-end;
 }
+.none {
+  display: none;
+}
 .gap-1 {
   gap: 10px;
 }
@@ -219,6 +222,7 @@ select {
   border: 1px solid #909090;
   width: 100%;
   padding-left: 15px;
+  padding-right: 15px;
   border-radius: 4px;
 }
 input:focus,
