@@ -14,9 +14,6 @@ import frizura5 from "../../images/frizura5.jpg";
 import frizura7 from "../../images/frizura7.jpg";
 import fer1 from "../../images/fer1.jpg";
 
-
-
-
 import { Carousel } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +23,7 @@ export const podatki = [
     fotka: barber3,
     naziv: "Hair",
 
-     opis: "Always in step with the trends, with us you can get the most popular hairstyles today. Regardless of your wishes, we are here to fulfill everything! ",
+    opis: "Always in step with the trends, with us you can get the most popular hairstyles today. Regardless of your wishes, we are here to fulfill everything! ",
   },
   {
     id: 2,
@@ -68,11 +65,11 @@ const Welcome = () => {
         <h1>SERVICES WE OFFER</h1>
         <div className="storitve py-3 my-3">
           {podatki.map((podatek) => (
-            <div className=" storitev"  key={podatek.id}>
+            <div className="storitev" key={podatek.id}>
               <img className="foto" src={podatek.fotka}></img>
               <h2>{podatek.naziv}</h2>
               <div className="p-2">
-              <h4>{podatek.opis}</h4>
+                <h4>{podatek.opis}</h4>
               </div>
             </div>
           ))}

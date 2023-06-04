@@ -12,6 +12,7 @@ import {
 import emailjs from "@emailjs/browser";
 
 function BookAppointment() {
+  const [service = "", setService] = useState("");
   const [userName = "", setUserName] = useState("");
   const [email = "", setEmail] = useState("");
   const [phoneNumber = "", setPhoneNumber] = useState("");
@@ -120,6 +121,7 @@ function BookAppointment() {
         date,
         slot: selectedSlot,
         barberName: `${barber.firstName} ${barber.lastName}`,
+        service,
         userName,
         email,
         phoneNumber,
@@ -259,6 +261,19 @@ function BookAppointment() {
                 name="selectedSlot"
                 value={selectedSlot}
               />
+              <label>Service:</label>
+              <select
+                name="service"
+                id="service"
+                onChange={(e) => setService(e.target.value)}
+              >
+                <option></option>
+                {barber.services.map((serv) => (
+                  <option value={serv.service}>
+                    {serv.service} ({serv.price}€)
+                  </option>
+                ))}
+              </select>
               <label>Name:</label>
               <input
                 type="text"
@@ -301,7 +316,6 @@ function BookAppointment() {
                 onClick={onBookAppointment}
                 placeholder="Book Appointment"
               />
-              {console.log(form)}
             </form>
           )}
         </div>

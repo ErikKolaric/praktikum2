@@ -80,6 +80,10 @@ function Appointments() {
       dataIndex: "barberName",
     },
     {
+      title: "Service",
+      dataIndex: "service",
+    },
+    {
       title: "User",
       dataIndex: "userName",
     },
@@ -111,6 +115,13 @@ function Appointments() {
                   type="text"
                   name="barberName"
                   value={record.barberName}
+                />
+                <input
+                  placeholder="SERVICE"
+                  className="none"
+                  type="text"
+                  name="service"
+                  value={record.service}
                 />
                 <input
                   placeholder="BOOKED ON"
