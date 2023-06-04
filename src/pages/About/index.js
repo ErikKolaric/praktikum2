@@ -8,21 +8,16 @@ const About = () => {
       <img className="team" src={team} />
       <p className="title p-3">
         The barber salon was created in 2017 as a result of a long-conceived
-        plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany.
+        plan. We are located at Molkereistraße 8, 1020 Wien, Austrija
+.
         It was founded by Stef Mike and Mark Held, who are considered the best
         barbers in Europe. We guarantee you quality! The pleasure is ours!
       </p>
       <p className="title p-3">
-        The barber salon was created in 2017 as a result of a long-conceived
-        plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany.
-        It was founded by Stef Mike and Mark Held, who are considered the best
-        barbers in Europe. We guarantee you quality! The pleasure is ours!
+      If you join this great team, you can contact us by e-mail or by phone.
       </p>
       <p className="title p-3">
-        The barber salon was created in 2017 as a result of a long-conceived
-        plan. We are located at Gabelsbergerstraße 31-19, 80333 Munich, Germany.
-        It was founded by Stef Mike and Mark Held, who are considered the best
-        barbers in Europe. We guarantee you quality! The pleasure is ours!
+      We plan to develop further and expand to more locations in Austria, but also in Germany!In addition to Vienna and Graz, see you soon in Munich...
       </p>
       <div className="mx-auto text-center ">
         <h2 className="p-2">WHERE ARE WE LOCATED?</h2>
@@ -37,10 +32,9 @@ const About = () => {
       </div>
       <div className="mx-auto text-center my-3">
         <h2 className="py-3">CONTACT US</h2>
-        <p>kontakt</p>
-        <p>kontakt</p>
-        <p>kontakt</p>
-        <p>kontakt</p>
+        <p>Telephone: 948372990</p>
+        <p>Email : salonreo@gmail.com</p>
+        <p>www.salonreo.com</p>
       </div>
     </div>
   );

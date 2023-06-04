@@ -10,6 +10,13 @@ import friz3 from "../../images/friz3.jpeg";
 import friz4 from "../../images/friz4.jpeg";
 import friz5 from "../../images/friz5.jpeg";
 import friz6 from "../../images/friz6.jpeg";
+import frizura5 from "../../images/frizura5.jpg";
+import frizura7 from "../../images/frizura7.jpg";
+import fer1 from "../../images/fer1.jpg";
+
+
+
+
 import { Carousel } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -18,19 +25,20 @@ export const podatki = [
     id: 1,
     fotka: barber3,
     naziv: "Hair",
-    opis: "opis opis opis opis opis opis opis ",
+
+     opis: "Always in step with the trends, with us you can get the most popular hairstyles today. Regardless of your wishes, we are here to fulfill everything! ",
   },
   {
     id: 2,
     fotka: barber2,
     naziv: "Beard",
-    opis: "opis opis opis opis opis opis opis ",
+    opis: "For men, the beard is definitely as important as the hairstyle! In order to always be well-groomed and above all satisfied, make an appointment with our perfect barbers! ",
   },
   {
     id: 3,
     fotka: barber5,
     naziv: "Face",
-    opis: "opis opis opis opis opis opis opis ",
+    opis: "It is important to treat the facial area in time to avoid accelerated aging. Although it is more commonly used by women, we also have peels for men!",
   },
 ];
 
@@ -40,7 +48,7 @@ const Welcome = () => {
     <div className="wrapper shadow font-white wrapper--home mx-auto d-flex space-between align-items-center w-full">
       <div className="relative mx-auto">
         <h1 className="title p-3 absolute w-full mx-auto z">
-          WELCOME TO THE BEST BARBER SALON REO
+          WELCOME TO THE BEST MEN'S SALON REO
         </h1>
       </div>
       <Carousel
@@ -60,10 +68,12 @@ const Welcome = () => {
         <h1>SERVICES WE OFFER</h1>
         <div className="storitve py-3 my-3">
           {podatki.map((podatek) => (
-            <div className="storitev" key={podatek.id}>
+            <div className=" storitev"  key={podatek.id}>
               <img className="foto" src={podatek.fotka}></img>
               <h2>{podatek.naziv}</h2>
-              <h2>{podatek.opis}</h2>
+              <div className="p-2">
+              <h4>{podatek.opis}</h4>
+              </div>
             </div>
           ))}
         </div>
@@ -90,13 +100,13 @@ const Welcome = () => {
             <img className="friz" src={friz3} alt="piling" />
           </div>
           <div className="grid-item">
-            <img className="friz" src={friz4} alt="piling" />
+            <img className="friz" src={frizura5} alt="piling" />
           </div>
           <div className="grid-item">
-            <img className="friz" src={friz5} alt="piling" />
+            <img className="friz" src={frizura7} alt="piling" />
           </div>
           <div className="grid-item">
-            <img className="friz" src={friz6} alt="piling" />
+            <img className="friz" src={fer1} alt="piling" />
           </div>
         </div>
         <div className="text-center">

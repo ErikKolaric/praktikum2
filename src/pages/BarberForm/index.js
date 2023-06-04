@@ -79,7 +79,7 @@ function BarberForm() {
             <h3 className="uppercase my-2">
               {alreadyApproved
                 ? "Update your information"
-                : " Apply as a barber"}
+                : " Apply as a worker"}
             </h3>
             <hr />
             <Form
@@ -286,7 +286,6 @@ function BarberForm() {
                       "Thursday",
                       "Friday",
                       "Saturday",
-                      "Sunday",
                     ].map((day, index) => (
                       <div className="flex gap-1 items-center">
                         <input

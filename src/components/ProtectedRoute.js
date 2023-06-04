@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
       <div className="header bg-brown p-2 flex justify-between items-center">
         <h1 className="flex items-center gap-1">
           <img src={logo} alt="Logo" width="50" height="50" />
-          <strong className="">BarberShop</strong>
+          <strong className="">MEN'S SALON REO</strong>
         </h1>
         <div>
           <ul className="nav gap-2">
@@ -27,7 +27,7 @@ const ProtectedRoute = ({ children }) => {
                 className="transparent cursor-pointer"
                 onClick={() => navigate("/barbers")}
               >
-                BARBERS
+                WORKERS
               </button>
             </li>
             <li>
