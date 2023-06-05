@@ -79,7 +79,7 @@ const Welcome = () => {
           ))}
         </Row>
       </div>
-      <div className="py-3 mx-auto">
+      <div className="mx-auto">
         <h1 className="title p-3 w-full z">LATEST WORK</h1>
         <Row className="grid-container">
           <Col className="grid-item" xs={{ span: 20 }} md={{ span: 7 }}>
