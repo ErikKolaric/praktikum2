@@ -106,7 +106,7 @@ function Appointments() {
         const user = JSON.parse(localStorage.getItem("user"));
         if (record.status === "approved" && user.role === "barber") {
           return (
-            <div className="flex">
+            <div className="flex p-2">
               {console.log(record)}
               <form className="mx-auto" ref={form} onSubmit={sendEmail}>
                 <input
@@ -188,11 +188,7 @@ function Appointments() {
   useEffect(() => {
     getData();
   }, []);
-  return (
-    <div>
-      <Table columns={columns} dataSource={appointments} />
-    </div>
-  );
+  return <Table columns={columns} dataSource={appointments} />;
 }
 
 export default Appointments;

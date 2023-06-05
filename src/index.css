@@ -12,7 +12,12 @@ html {
 p {
   font-size: larger;
 }
-
+.bookBarb {
+  width: 600px;
+}
+.barbers {
+  width: 100%;
+}
 .red {
   color: rgb(218, 64, 64);
 }
@@ -26,6 +31,9 @@ a,
 p {
   font-weight: 500;
 }
+td {
+  background-color: white;
+}
 .shadow {
   text-shadow: 2px 0 0 black;
 }
@@ -33,9 +41,10 @@ p {
   color: white;
 }
 label {
-  min-width: 200px;
   align-items: center;
   display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /* colors and backgrounds */
 .bg-white {
@@ -90,6 +99,9 @@ label {
 .justify-between {
   justify-content: space-between;
 }
+.justify-around {
+  justify-content: space-around;
+}
 .justify-end {
   justify-content: flex-end;
 }
@@ -130,9 +142,21 @@ label {
 .h-screen {
   height: 100vh;
 }
+.h-auto {
+  height: 100%;
+}
 .w-screen {
   width: 100%;
   max-width: 2160px;
+}
+.min-h-screen {
+  height: screen;
+}
+.h-300 {
+  height: 200px;
+}
+.h-400 {
+  height: 400px;
 }
 .h-500 {
   height: 500px;
@@ -142,6 +166,9 @@ label {
 }
 .w-100 {
   min-width: 120px;
+}
+.w-200 {
+  width: 200px;
 }
 .w-400 {
   width: 400px;
@@ -260,6 +287,9 @@ textarea {
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -285,7 +315,9 @@ li {
 .ant-form-item {
   margin-bottom: 8px !important;
 }
-
+.search {
+  width: 400px;
+}
 .spinner-parent {
   position: fixed;
   inset: 0;
@@ -309,24 +341,28 @@ hr {
 }
 .grid-container {
   display: grid;
+  width: screen;
   grid-template-columns: auto auto auto;
   padding: 10px;
-  justify-content: center;
+  justify-content: space-around;
 }
 .grid-item {
-  padding: 20px;
+  width: 300px;
   font-size: 30px;
   text-align: center;
+  font-size: medium;
 }
 .friz {
   width: 300px;
   height: 300px;
+  margin-bottom: 16px;
   object-fit: cover;
   border-radius: 10px;
   opacity: 90%;
 }
 
 .storitev {
+  height: 100%;
   width: 310px;
   padding-bottom: 15px;
   margin: auto;
@@ -338,7 +374,7 @@ hr {
 
 .storitve {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
 }
 
@@ -346,8 +382,8 @@ hr {
   opacity: 90%;
   border-radius: 10%;
   object-fit: cover;
-  height: 270px;
-  width: 270px;
+  height: 250px;
+  width: 250px;
   margin-bottom: 15px;
   margin: 15px;
 }
@@ -390,14 +426,15 @@ hr {
 }
 
 /* za mobile */
-@media only screen and (max-width: 900px) {
-  .foto {
-    width: 160px;
-    height: 160px;
-  }
-
+@media only screen and (min-width: 901px) {
   .storitev {
     width: 200px;
+    height: 460px;
+    font-size: medium;
+  }
+  .foto {
+    width: 240px;
+    height: 240px;
   }
 
   #fotka {
@@ -418,32 +455,101 @@ hr {
     display: block;
     flex-direction: unset;
   }
-
+  .info {
+    width: 50%;
+  }
   .tekst {
     font-size: 20px;
     padding: 5px;
   }
+  .dropdown {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  .dropdown {
+    display: none;
+  }
+  .storitev {
+    height: 420px;
+  }
+  .logo {
+    font-size: medium;
+  }
+  .foto {
+    width: 140px;
+    height: 140px;
+  }
+  .search {
+    width: 200px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+  }
+  .info {
+    width: 70%;
+  }
+
+  .grid-item {
+    max-width: 100%;
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: medium;
+  }
+  .bookBarb {
+    width: 500px;
+  }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 575px) {
   .mobile-user {
     display: block;
     padding-top: 20px;
   }
-
+  .info {
+    width: 100%;
+  }
+  .search {
+    width: 140px;
+  }
+  .dropdown {
+    display: block;
+  }
+  .logo {
+    font-size: medium;
+  }
   .prikaz {
     margin-left: auto;
     margin-right: auto;
     width: 60%;
   }
 
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+    justify-content: center;
+  }
+  .grid-item {
+    width: 380px;
+    font-size: 30px;
+    text-align: center;
+    font-size: medium;
+  }
   .storitev {
     margin-top: 30px;
     margin-bottom: 30px;
     width: 210px;
     height: auto;
   }
-
+  .foto {
+    width: 240px;
+    height: 240px;
+  }
   .tekst {
     font-size: 20px;
     padding: 5px;
@@ -451,6 +557,13 @@ hr {
   .animacija {
     transition: 0.6s;
     transform: translateY(-180px) rotate(1turn);
+  }
+  .team {
+    width: 100%;
+    height: 300px;
+  }
+  .karta {
+    width: 100%;
   }
 
   .image {
@@ -488,7 +601,13 @@ hr {
     transition-duration: 1s;
     transform: scale(1.1);
   }
-}
-
-@media screen and (max-width: 600px) {
+  .nav {
+    display: none;
+  }
+  .login {
+    display: none;
+  }
+  .bookBarb {
+    width: 100%;
+  }
 }

@@ -13,8 +13,7 @@ import friz6 from "../../images/friz6.jpeg";
 import frizura5 from "../../images/frizura5.jpg";
 import frizura7 from "../../images/frizura7.jpg";
 import fer1 from "../../images/fer1.jpg";
-
-import { Carousel } from "antd";
+import { Carousel, Col, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 
 export const podatki = [
@@ -63,51 +62,56 @@ const Welcome = () => {
 
       <div className="text-center my-3">
         <h1>SERVICES WE OFFER</h1>
-        <div className="storitve py-3 my-3">
+        <Row className="storitve py-3 my-3">
           {podatki.map((podatek) => (
-            <div className="storitev" key={podatek.id}>
+            <Col
+              className="storitev"
+              xs={{ span: 20 }}
+              sm={{ span: 7 }}
+              key={podatek.id}
+            >
               <img className="foto" src={podatek.fotka}></img>
               <h2>{podatek.naziv}</h2>
               <div className="p-2">
                 <h4>{podatek.opis}</h4>
               </div>
-            </div>
+            </Col>
           ))}
-        </div>
+        </Row>
       </div>
       <div className="py-3 mx-auto">
         <h1 className="title p-3 w-full z">LATEST WORK</h1>
-        <div className="grid-container">
-          <div className="grid-item">
+        <Row className="grid-container">
+          <Col className="grid-item" xs={{ span: 20 }} md={{ span: 7 }}>
             <img className="friz" src={friz4} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={friz5} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={friz6} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={friz} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={friz2} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={friz3} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={frizura5} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={frizura7} alt="piling" />
-          </div>
-          <div className="grid-item">
+          </Col>
+          <Col className="grid-item">
             <img className="friz" src={fer1} alt="piling" />
-          </div>
-        </div>
-        <div className="text-center">
-          <h2>
+          </Col>
+        </Row>
+        <div className="text-center m-2">
+          <h2 className="m-2">
             If you want to book your appointment{" "}
             <span
               className="cursor-pointer red"

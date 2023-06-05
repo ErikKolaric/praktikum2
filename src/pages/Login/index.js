@@ -36,10 +36,10 @@ const Login = () => {
     if (user) navigate("/");
   }, []);
   return (
-    <div className="flex justify-center items-center my-3">
+    <div className="flex h-screen justify-center p-2 my-3">
       <Form
         layout="vertical"
-        className="w-400 bg-white p-2"
+        className="w-400 h-400 rounded bg-white p-3"
         onFinish={onFinish}
       >
         <h2 className="uppercase my-1">

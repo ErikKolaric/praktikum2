@@ -52,17 +52,19 @@ const Home = () => {
   });
 
   return (
-    <div className="p-2 h-screen">
+    <div className="p-2">
       <div className="flex justify-between">
         <div>
           <input
             placeholder="Search barbers"
             onChange={(e) => setSearch(e.target.value)}
-            className="w-400 rounded"
+            className="search rounded"
           />
         </div>
-        <div className="flex">
-          <label htmlFor="services">Filter by services:</label>
+        <div className="flex gap-2">
+          <label htmlFor="services" className="text-right">
+            Filter by services:
+          </label>
           <select
             className="rounded p-1"
             name="services"
@@ -84,15 +86,15 @@ const Home = () => {
           </button>
         )}
       </div>
-      <Row gutter={[16, 16]} className="my-1 barbers">
+      <Row className="my-1 grid-container justify-between">
         {barbersFilter.map((barber) => {
           return (
-            <Col span={8}>
+            <Col className="grid-item py-2">
               <div
-                className="bg-white p-2 rounded flex-col gap-1 cursor-pointer"
+                className="bg-white p-2 justify-between rounded flex-col gap-1 cursor-pointer"
                 onClick={() => navigate(`/book-appointment/${barber.id}`)}
               >
-                <div className="flex justify-between w-full" key={barber.id}>
+                <div className="flex justify-between" key={barber.id}>
                   <h2 className="uppercase">
                     {barber.firstName} {barber.lastName}
                   </h2>

@@ -5,19 +5,20 @@ const About = () => {
   return (
     <div className="mx-auto p-2">
       <h1 className="title p-2">Beard Specialists, Hair, Face for Men</h1>
-      <img className="team" src={team} />
+      <img className="team rounded" src={team} />
       <p className="title p-3">
         The barber salon was created in 2017 as a result of a long-conceived
-        plan. We are located at Molkereistraße 8, 1020 Wien, Austrija
-.
-        It was founded by Stef Mike and Mark Held, who are considered the best
-        barbers in Europe. We guarantee you quality! The pleasure is ours!
+        plan. We are located at Molkereistraße 8, 1020 Wien, Austrija . It was
+        founded by Stef Mike and Mark Held, who are considered the best barbers
+        in Europe. We guarantee you quality! The pleasure is ours!
       </p>
       <p className="title p-3">
-      If you join this great team, you can contact us by e-mail or by phone.
+        If you join this great team, you can contact us by e-mail or by phone.
       </p>
       <p className="title p-3">
-      We plan to develop further and expand to more locations in Austria, but also in Germany!In addition to Vienna and Graz, see you soon in Munich...
+        We plan to develop further and expand to more locations in Austria, but
+        also in Germany!In addition to Vienna and Graz, see you soon in
+        Munich...
       </p>
       <div className="mx-auto text-center ">
         <h2 className="p-2">WHERE ARE WE LOCATED?</h2>
@@ -26,7 +27,7 @@ const About = () => {
           width="800"
           height="600"
           allowfullscreen=""
-          className="rounded-sm my-2"
+          className="rounded-sm my-2 karta"
           loading="lazy"
         ></iframe>
       </div>

@@ -90,7 +90,7 @@ function BookAppointment() {
       return (
         <div>
           <div
-            className="bg-white p-1 curser-pointer w-100 text-center"
+            className="bg-white rounded p-1 curser-pointer w-100 text-center"
             onClick={() => setSelectedSlot(slot)}
             style={{
               border:
@@ -181,7 +181,7 @@ function BookAppointment() {
 
         <hr />
 
-        <div className="flex flex-col gap-1 my-1 w-half">
+        <div className="flex info flex-col gap-1 my-1">
           <div className="flex justify-between w-full">
             <h4>
               <b>Experience:</b>
@@ -205,12 +205,6 @@ function BookAppointment() {
           </div>
           <div className="flex justify-between w-full">
             <h4>
-              <b>Address:</b>
-            </h4>
-            <h4>{barber.adress}</h4>
-          </div>
-          <div className="flex justify-between w-full">
-            <h4>
               <b>Speciality:</b>
             </h4>
             <h4>{barber.speciality}</h4>
@@ -227,11 +221,12 @@ function BookAppointment() {
 
         {/* slots here */}
         <div className="flex flex-col gap-1 my-2">
-          <div className="flex gap-2 w-400 items-end">
-            <div>
-              <span>Select date:</span>
+          <div className="flex text-center gap-2 w-400">
+            <div className="flex text-center gap-1">
+              <p className=" text-center w-200">Select date:</p>
               <input
                 type="date"
+                className="py-2"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 min={moment().format("DD-MM-YYYY")}
@@ -244,7 +239,7 @@ function BookAppointment() {
 
           {selectedSlot && (
             <form
-              className="w-600 my-3 mx-auto"
+              className="bookBarb my-3 mx-auto"
               ref={form}
               onSubmit={sendEmail}
             >
@@ -311,10 +306,10 @@ function BookAppointment() {
                 onChange={(e) => setCardNumber(e.target.value)}
               />
               <input
-                className="contained-btn"
+                className="contained-btn my-2"
                 type="submit"
+                value="Book Appointment"
                 onClick={onBookAppointment}
-                placeholder="Book Appointment"
               />
             </form>
           )}
