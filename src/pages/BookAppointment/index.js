@@ -172,7 +172,7 @@ function BookAppointment() {
 
   return (
     barber && (
-      <div className="bg-white p-2">
+      <div className="bg-white h-screen p-2">
         <h1 className="uppercase my-1">
           <b>
             {barber?.firstName} {barber?.lastName}
@@ -186,10 +186,7 @@ function BookAppointment() {
             <h4>
               <b>Experience:</b>
             </h4>
-            <h4>
-              {barber.experience}
-              Years
-            </h4>
+            <h4>{barber.experience} Years</h4>
           </div>
           <div className="flex justify-between w-full">
             <h4>
@@ -207,7 +204,7 @@ function BookAppointment() {
             <h4>
               <b>Speciality:</b>
             </h4>
-            <h4>{barber.speciality}</h4>
+            <h4 className="uppercase">{barber.speciality}</h4>
           </div>
           <div className="flex justify-between w-full">
             <h4>

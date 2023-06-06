@@ -73,7 +73,7 @@ function BarberForm() {
     checkIfAlreadyApplied();
   }, []);
   return (
-    <div className="bg-white p-2">
+    <div className="bg-white rounded p-2">
       <>
         <h3 className="uppercase my-2">
           {alreadyApproved ? "Update your information" : " Apply as a worker"}
@@ -258,20 +258,6 @@ function BarberForm() {
                 ]}
               >
                 <input type="time" />
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <Form.Item
-                label="Fee"
-                name="fee"
-                rules={[
-                  {
-                    required: true,
-                    message: "Required",
-                  },
-                ]}
-              >
-                <input type="number" />
               </Form.Item>
             </Col>
             <Col span={24}>
