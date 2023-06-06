@@ -44,7 +44,7 @@ const Welcome = () => {
     <div className="wrapper shadow font-white wrapper--home mx-auto d-flex space-between align-items-center w-full">
       <div className="relative mx-auto">
         <h1 className="title p-3 absolute w-full mx-auto z">
-          WELCOME TO THE BEST MEN'S SALON REO
+          WELCOME TO THE SALON REO
         </h1>
       </div>
       <Carousel
@@ -80,7 +80,7 @@ const Welcome = () => {
         </Row>
       </div>
       <div className="mx-auto">
-        <h1 className="title p-3 w-full z">LATEST WORK</h1>
+        <h1 className="title p-3 w-full">LATEST WORK</h1>
         <Row className="grid-container">
           <Col className="grid-item" xs={{ span: 20 }} md={{ span: 7 }}>
             <img className="friz" src={friz4} alt="piling" />

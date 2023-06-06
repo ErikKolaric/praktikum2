@@ -4,11 +4,11 @@ import team from "../../images/team.jpeg";
 const About = () => {
   return (
     <div className="mx-auto p-2">
-      <h1 className="title p-2">Beard Specialists, Hair, Face for Men</h1>
+      <h1 className="title p-2">Beard, Hair and Face Specialists</h1>
       <img className="team rounded" src={team} />
       <p className="title p-3">
         The barber salon was created in 2017 as a result of a long-conceived
-        plan. We are located at Molkereistraße 8, 1020 Wien, Austrija . It was
+        plan. We are located at Molkereistraße 8, 1020 Wien, Austria . It was
         founded by Stef Mike and Mark Held, who are considered the best barbers
         in Europe. We guarantee you quality! The pleasure is ours!
       </p>

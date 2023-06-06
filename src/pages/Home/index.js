@@ -56,13 +56,13 @@ const Home = () => {
       <div className="flex justify-between">
         <div>
           <input
-            placeholder="Search barbers"
+            placeholder="Search"
             onChange={(e) => setSearch(e.target.value)}
             className="search rounded"
           />
         </div>
         <div className="flex gap-2">
-          <label htmlFor="services" className="text-right">
+          <label htmlFor="services" className="text-right w-200">
             Filter by services:
           </label>
           <select

@@ -172,7 +172,7 @@ function BookAppointment() {
 
   return (
     barber && (
-      <div className="bg-white h-screen p-2">
+      <div className="bg-white p-2 h-auto">
         <h1 className="uppercase my-1">
           <b>
             {barber?.firstName} {barber?.lastName}
@@ -218,17 +218,15 @@ function BookAppointment() {
 
         {/* slots here */}
         <div className="flex flex-col gap-1 my-2">
-          <div className="flex text-center gap-2 w-400">
-            <div className="flex text-center gap-1">
-              <p className=" text-center w-200">Select date:</p>
-              <input
-                type="date"
-                className="py-2"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                min={moment().format("DD-MM-YYYY")}
-              />
-            </div>
+          <div>
+            <h3 className="w-200 py-1">Select date:</h3>
+            <input
+              type="date"
+              className="py-2 w-400"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              min={moment().format("DD-MM-YYYY")}
+            />
           </div>
           <div className="flex gap-2 scroll-horizontal">
             {date && getSlotsData()}

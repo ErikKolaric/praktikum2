@@ -145,6 +145,9 @@ label {
 .h-auto {
   height: 100%;
 }
+.w-200 {
+  width: 200px;
+}
 .w-screen {
   width: 100%;
   max-width: 2160px;
@@ -287,6 +290,9 @@ textarea {
 .text-center {
   text-align: center;
 }
+.vertical-align {
+  vertical-align: baseline;
+}
 .text-right {
   text-align: right;
 }
@@ -298,9 +304,6 @@ textarea {
 }
 .cursor-pointer {
   cursor: pointer;
-}
-.text-center {
-  text-align: center;
 }
 .nav {
   display: flex;
@@ -680,7 +683,6 @@ hr {
 .footer {
   background-color: #f9f9f9;
   padding: 30px;
-  margin-top: 50px;
 }
 
 .footer-contact {

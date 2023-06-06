@@ -101,7 +101,7 @@ const ProtectedRoute = ({ children }) => {
       <div className="header bg-brown p-2 flex justify-between items-center">
         <h1 className="flex items-center gap-1">
           <img src={logo} alt="Logo" width="50" height="50" />
-          <strong className="logo">MEN'S SALON REO</strong>
+          <strong className="logo">SALON REO</strong>
         </h1>
         <div>
           <Dropdown
