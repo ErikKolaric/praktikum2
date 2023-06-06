@@ -306,6 +306,65 @@ textarea {
   display: flex;
   justify-content: center;
 }
+.nav li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.nav li button {
+  background-color: #c9b8a6;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.nav li button:hover {
+  color: #ffffff;
+}
+
+.nav li .underline {
+  text-decoration: underline;
+}
+
+.nav li .uppercase {
+  text-transform: uppercase;
+}
+
+.ostalo button {
+  background-color: #c9b8a6;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.ostalo button:hover {
+  color: #ffffff;
+}
+
+.ostalo .underline {
+  text-decoration: underline;
+}
+
+.ostalo .uppercase {
+  text-transform: uppercase;
+}
+
 li {
   padding-left: 10px;
   padding-right: 10px;
