@@ -2,6 +2,7 @@ import { Button, Dropdown } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
+import Footer from "./Footer";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const ProtectedRoute = ({ children }) => {
       label: (
         <li>
           <button
-            className="transparent cursor-pointer"
+            className="transparent cursor-pointer home-link"
             onClick={() => navigate("/")}
           >
             HOME
@@ -26,7 +27,7 @@ const ProtectedRoute = ({ children }) => {
       label: (
         <li>
           <button
-            className="transparent cursor-pointer"
+            className="transparent cursor-pointer book-link"
             onClick={() => navigate("/barbers")}
           >
             BOOK
@@ -39,7 +40,7 @@ const ProtectedRoute = ({ children }) => {
       label: (
         <li>
           <button
-            className="transparent cursor-pointer"
+            className="transparent cursor-pointer about-link"
             onClick={() => navigate("/about")}
           >
             ABOUT US
@@ -53,7 +54,7 @@ const ProtectedRoute = ({ children }) => {
         <div className="flex items-center gap-1">
           {user && <i className="ri-shield-user-line"></i>}
           <span
-            className="uppercase cursor-pointer underline"
+            className="uppercase cursor-pointer underline profile-link"
             onClick={() => {
               if (user.role === "admin") navigate("/admin");
               else navigate("/profile");
@@ -70,7 +71,7 @@ const ProtectedRoute = ({ children }) => {
         <li>
           {!user && (
             <button
-              className="cursor-pointer text-center transparent "
+              className="cursor-pointer text-center transparent login-link"
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/login");
@@ -81,7 +82,7 @@ const ProtectedRoute = ({ children }) => {
           )}
           {user && (
             <i
-              className="ri-logout-box-r-line"
+              className="ri-logout-box-r-line logout-link"
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/login");
@@ -147,7 +148,7 @@ const ProtectedRoute = ({ children }) => {
           <ul className="nav gap-2">
             <li>
               <button
-                className="transparent cursor-pointer"
+                className="transparent cursor-pointer home-link"
                 onClick={() => navigate("/")}
               >
                 HOME
@@ -155,7 +156,7 @@ const ProtectedRoute = ({ children }) => {
             </li>
             <li>
               <button
-                className="transparent cursor-pointer"
+                className="transparent cursor-pointer book-link"
                 onClick={() => navigate("/barbers")}
               >
                 BOOK
@@ -163,7 +164,7 @@ const ProtectedRoute = ({ children }) => {
             </li>
             <li>
               <button
-                className="transparent cursor-pointer"
+                className="transparent cursor-pointer about-link"
                 onClick={() => navigate("/about")}
               >
                 ABOUT US
@@ -171,22 +172,24 @@ const ProtectedRoute = ({ children }) => {
             </li>
           </ul>
         </div>
-        <div className="flex login items-center gap-3">
-          <div className="flex items-center gap-1">
-            {user && <i className="ri-shield-user-line"></i>}
-            <span
-              className="uppercase cursor-pointer underline"
-              onClick={() => {
-                if (user.role === "admin") navigate("/admin");
-                else navigate("/profile");
-              }}
-            >
-              {user?.name}
-            </span>
-          </div>
+        <div className="flex login items-center gap-3 ostalo">
+          {user && (
+            <div className="flex items-center gap-1">
+              <button
+                className="uppercase cursor-pointer"
+                onClick={() => {
+                  if (user.role === "admin") navigate("/admin");
+                  else navigate("/profile");
+                }}
+              >
+                {user && <i className="ri-shield-user-line"></i>}
+                {user?.name}
+              </button>
+            </div>
+          )}
           {!user && (
             <button
-              className="cursor-pointer transparent "
+              className="cursor-pointer transparent"
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/login");
@@ -196,20 +199,22 @@ const ProtectedRoute = ({ children }) => {
             </button>
           )}
           {user && (
-            <i
-              className="ri-logout-box-r-line"
+            <button
+              className="ri-logout-box-r-line cursor-pointer transparent"
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/login");
               }}
             >
               LOGOUT
-            </i>
+            </button>
           )}
         </div>
       </div>
       <div className="content">{children}</div>
-      <div className="h-300 bg-white text-center py-3">FOOTER</div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
