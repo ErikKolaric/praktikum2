@@ -222,7 +222,7 @@ function BookAppointment() {
             <h3 className="w-200 py-1">Select date:</h3>
             <input
               type="date"
-              className="py-2 w-400"
+              className="py-2"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               min={moment().format("DD-MM-YYYY")}

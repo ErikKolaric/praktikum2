@@ -62,7 +62,7 @@ const Welcome = () => {
 
       <div className="text-center my-3">
         <h1>SERVICES WE OFFER</h1>
-        <Row className="storitve py-3 my-3">
+        <Row className="storitve py-3 mb-3">
           {podatki.map((podatek) => (
             <Col
               className="storitev"
@@ -111,7 +111,7 @@ const Welcome = () => {
           </Col>
         </Row>
         <div className="text-center m-2">
-          <h2 className="m-2">
+          <h2 className="m-1">
             If you want to book your appointment{" "}
             <span
               className="cursor-pointer red"

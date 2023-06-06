@@ -43,7 +43,7 @@ const ProtectedRoute = ({ children }) => {
             className="transparent cursor-pointer about-link"
             onClick={() => navigate("/about")}
           >
-            ABOUT US
+            ABOUT
           </button>
         </li>
       ),
@@ -101,11 +101,11 @@ const ProtectedRoute = ({ children }) => {
       <div className="header bg-brown p-2 flex justify-between items-center">
         <h1 className="flex items-center gap-1">
           <img src={logo} alt="Logo" width="50" height="50" />
-          <strong className="logo">SALON REO</strong>
+          <strong className="logo w-100">SALON REO</strong>
         </h1>
         <div>
           <Dropdown
-            className="dropdown bg-brown"
+            className="dropdown border-none bg-brown"
             menu={{
               items,
             }}
@@ -145,10 +145,10 @@ const ProtectedRoute = ({ children }) => {
               </svg>
             </Button>
           </Dropdown>
-          <ul className="nav gap-2">
+          <ul className="nav">
             <li>
               <button
-                className="transparent cursor-pointer home-link"
+                className="transparent cursor-pointer"
                 onClick={() => navigate("/")}
               >
                 HOME
@@ -156,7 +156,7 @@ const ProtectedRoute = ({ children }) => {
             </li>
             <li>
               <button
-                className="transparent cursor-pointer book-link"
+                className="transparent cursor-pointer"
                 onClick={() => navigate("/barbers")}
               >
                 BOOK
@@ -164,15 +164,15 @@ const ProtectedRoute = ({ children }) => {
             </li>
             <li>
               <button
-                className="transparent cursor-pointer about-link"
+                className="transparent cursor-pointer"
                 onClick={() => navigate("/about")}
               >
-                ABOUT US
+                ABOUT
               </button>
             </li>
           </ul>
         </div>
-        <div className="flex login items-center gap-3 ostalo">
+        <div className="flex login items-center">
           {user && (
             <div className="flex items-center gap-1">
               <button

@@ -11,6 +11,7 @@ html {
 }
 p {
   font-size: larger;
+  margin: auto;
 }
 .bookBarb {
   width: 600px;
@@ -123,7 +124,9 @@ label {
 .gap-3 {
   gap: 30px;
 }
-
+.border-none {
+  border: none;
+}
 .slika {
   object-fit: cover;
   width: 100%;
@@ -135,7 +138,7 @@ label {
   width: 100%;
   height: 700px;
   opacity: 90%;
-  object-position: 100% 0;
+  object-position: 50%;
 }
 
 /* heights and widths */
@@ -207,6 +210,9 @@ label {
 }
 .m-3 {
   margin: 30px;
+}
+.mb-3 {
+  margin-bottom: 30px;
 }
 .pb-3 {
   padding-bottom: 30px;
@@ -307,14 +313,22 @@ textarea {
 }
 .nav {
   display: flex;
-  justify-content: center;
 }
-.nav li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 .nav li button {
+  background-color: #c9b8a6;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.login button {
   background-color: #c9b8a6;
   border: none;
   cursor: pointer;
@@ -332,46 +346,10 @@ textarea {
 .nav li button:hover {
   color: #ffffff;
 }
-
-.nav li .underline {
-  text-decoration: underline;
-}
-
-.nav li .uppercase {
-  text-transform: uppercase;
-}
-
-.ostalo button {
-  background-color: #c9b8a6;
-  border: none;
-  cursor: pointer;
-  color: #333;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 10px 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-}
-
-.ostalo button:hover {
-  color: #ffffff;
-}
-
-.ostalo .underline {
-  text-decoration: underline;
-}
-
-.ostalo .uppercase {
-  text-transform: uppercase;
-}
-
 li {
-  padding-left: 10px;
-  padding-right: 10px;
   list-style-type: none;
+  text-align: center;
+  vertical-align: center;
 }
 /* antd overiding*/
 .ant-form-item {
@@ -414,7 +392,8 @@ hr {
 .grid-item {
   width: 300px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-bottom: 20px;
   font-size: 30px;
   text-align: center;
   font-size: medium;
@@ -505,7 +484,17 @@ hr {
     width: 240px;
     height: 240px;
   }
+  .login button {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
+  .nav li {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   #fotka {
     width: 80%;
   }
@@ -539,18 +528,19 @@ hr {
   .dropdown {
     display: none;
   }
+
   .storitev {
     height: 420px;
   }
   .logo {
-    font-size: medium;
+    display: none;
   }
   .foto {
     width: 140px;
     height: 140px;
   }
   .search {
-    width: 200px;
+    width: 100%;
   }
   .grid-container {
     display: grid;
@@ -560,7 +550,24 @@ hr {
   .info {
     width: 70%;
   }
-
+  .team {
+    height: 500px;
+  }
+  .nav li {
+    min-width: 100px;
+  }
+  .nav li button {
+    font-size: smaller;
+  }
+  .login button {
+    font-size: smaller;
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .karta {
+    width: 100%;
+  }
   .grid-item {
     max-width: 100%;
     font-size: 30px;
@@ -574,7 +581,7 @@ hr {
   }
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 620px) {
   .mobile-user {
     display: block;
     padding-top: 20px;
@@ -583,13 +590,13 @@ hr {
     width: 100%;
   }
   .search {
-    width: 140px;
+    width: 100%;
   }
   .dropdown {
     display: block;
   }
   .logo {
-    font-size: medium;
+    display: block;
   }
   .prikaz {
     margin-left: auto;
@@ -604,7 +611,7 @@ hr {
     justify-content: center;
   }
   .grid-item {
-    width: 380px;
+    width: 320px;
     font-size: 30px;
     text-align: center;
     font-size: medium;
@@ -629,7 +636,7 @@ hr {
   }
   .team {
     width: 100%;
-    height: 300px;
+    height: 280px;
   }
   .karta {
     width: 100%;
@@ -659,7 +666,9 @@ hr {
     cursor: pointer;
     user-select: none;
   }
-
+  .karta {
+    height: 400px;
+  }
   .slide {
     opacity: 0;
     transition-duration: 1s ease;

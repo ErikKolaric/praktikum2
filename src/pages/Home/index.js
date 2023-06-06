@@ -54,7 +54,7 @@ const Home = () => {
   return (
     <div className="p-2">
       <div className="flex justify-between">
-        <div>
+        <div className="w-half">
           <input
             placeholder="Search"
             onChange={(e) => setSearch(e.target.value)}
@@ -62,9 +62,7 @@ const Home = () => {
           />
         </div>
         <div className="flex gap-2">
-          <label htmlFor="services" className="text-right w-200">
-            Filter by services:
-          </label>
+          <p className="text-center">Filter:</p>
           <select
             className="rounded p-1"
             name="services"

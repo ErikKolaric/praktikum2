@@ -7,9 +7,9 @@ import moment from "moment/moment";
 const Profile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
-    <div className="m-2 scroll-horizontal">
+    <div className="m-2">
       <Tabs>
-        <Tabs.Pane tab="Appointments" key="2">
+        <Tabs.Pane tab="Appointments" className="scroll-horizontal" key="2">
           <Appointments />
         </Tabs.Pane>
         <Tabs.Pane tab="Profile" key="1">
