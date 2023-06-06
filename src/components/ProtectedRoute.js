@@ -2,6 +2,7 @@ import { Button, Dropdown } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
+import Footer from "./Footer";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
@@ -211,7 +212,9 @@ const ProtectedRoute = ({ children }) => {
         </div>
       </div>
       <div className="content">{children}</div>
-      <div className="h-300 bg-white text-center py-3">FOOTER</div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
