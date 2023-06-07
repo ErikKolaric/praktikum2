@@ -1,0 +1,36 @@
+Ime Projekta :  STORITEV ZA NAROčANJE (SALON REO)
+
+Kratek plot v eni vrstici, ki povzame bistvo rešitve:
+Storitev za naročanje oz. SALON REO je salon kje se lahko naročite na termin pri barberju in izberete katero storitev zelite.
+
+
+Leto izdelave: 2023
+
+Avtor1 Priimek1 : Erik Kolarić
+Avtor2 Priimek2 : Olga Jokić
+Avtor3 Priimek3 : Rebeka Cep
+
+
+
+
+Domača stran: https://barber-shop-f93f9.firebaseapp.com/
+Koda: https://github.com/ErikKolaric/praktikum2
+
+
+
+Kategorizacija: celovita informacijska rešitev, mobilna aplikacija, namizna aplikacija, spletna aplikacija, predstavitvena spletna stran
+
+Oznake: ReactJS, GitHub, FireBase, JSX...
+
+Opis projekta v nekaj odstavkih / vrsticah (cca 150 besed):
+-HomePage strana ima opis kaj vse tocno ponujamo in slike nasih strank
+-Book stran prikaze kdo so zaposleni in lahko rezervirate prost termin 
+-login stran za login zaposlenih
+-AbouUs stran prikaze kje se nahajamo in na kak nacin je vse zacelo
+-Zaposlen lahko uredi svojo strano ce zeli (osebne podatke)
+-Na Book strani lahko izberete pri katerem zaposlenem boste isli na podlagi filtera ali search opcije
+-Pri rezervaciji termina, termini ki so tamnejsi (ni mogoc click na njih) so ze zavzeti in ni ga mogoce dobit
+-Po odabiru termina izpolnite input formo z osebnimi podatki kako bi lahko rezervirali termin
+-Po clicku na button book appointment dobiste obvestilo na mail da ste rezervirali termin na xx-yy-zzzz v xy urah. 
+-Zaposlen lahko naredi cancel pri rezervaciji (naceloma je default approved, medtem obstaja button cancel, ce tako zaposlen zeli)
+
